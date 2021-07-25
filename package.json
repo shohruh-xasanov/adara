@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shohruh-xasanov/springoo.git"
+    "url": "git+https://github.com/shohruh-xasanov/adara.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shohruh-xasanov/springoo/issues"
+    "url": "https://github.com/shohruh-xasanov/adara/issues"
   },
-  "homepage": "https://github.com/shohruh-xasanov/springoo#readme",
+  "homepage": "https://github.com/shohruh-xasanov/adara#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
