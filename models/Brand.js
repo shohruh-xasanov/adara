@@ -8,4 +8,4 @@ const designerSchema = new mongoose.Schema({
     timestamps:true
 })
 
-module.exports = mongoose.model('Designer', designerSchema)
+module.exports = mongoose.model('Brand', designerSchema)

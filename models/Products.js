@@ -5,12 +5,16 @@ const productSchema = new mongoose.Schema({
         uz:{type:String, required:true},
         ru:{type:String, required:true}
     },
-    type:{
+    typeID:{
         type:mongoose.Schema.ObjectId,
         ref:'Type',
         required:true
     },
     bestSeller_count:{
+        type:Number,
+        default:0
+    },
+    chegirma:{
         type:Number,
         default:0
     },
@@ -28,7 +32,6 @@ const productSchema = new mongoose.Schema({
     designerID:{
         type:mongoose.Schema.ObjectId,
         ref:'Designer',
-        default:'undifined'
     },
     categoryID:{
             type:mongoose.Schema.ObjectId,
@@ -43,9 +46,9 @@ const productSchema = new mongoose.Schema({
         type: Number,
          required: true
     },
-    chegirma:{
-        type:Number,
-        default:0
+    delverTime :
+    {
+        type: String, required:true
     },
     gender:{
         type:String,
@@ -66,4 +69,4 @@ const productSchema = new mongoose.Schema({
     timestamps:true
 });
 
-module.exports = mongoose.model('Prodeuct', productSchema)
+module.exports = mongoose.model('Product', productSchema)
