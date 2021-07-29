@@ -1,12 +1,15 @@
 const Product = require('../models/Products')
 const sharp = require('sharp')
 const Category = require('../models/Category')
+const Type = require('../models/Type')
 const Color = require('../models/Color')
+const Brand = require('../models/Brand')
 const fs = require('fs')
 const path = require('path')
 
 
 exports.addProduct = async (req,res,next)=>{
+    try {
         const files = req.files;
         let urls = [];
         let orginal=`/public/uploads/org/${files[0].filename}`
@@ -40,7 +43,8 @@ exports.addProduct = async (req,res,next)=>{
                 ru:req.body.descriptionru
             },
             poster:orginal,
-            designerID:req.body.designerID,
+            size:req.body.size,
+            brandID:req.body.brandID,
             categoryID:req.body.categoryID,
             colorID:req.body.colorID,
             price:req.body.price,
@@ -50,10 +54,18 @@ exports.addProduct = async (req,res,next)=>{
             images:urls
         })
         await product.save()
-        res.status(201).send(product)
+        res.redirect('/api/product/all')
+    } catch (error) {
+        return res.status(500).json({msg:error.message})
+    }
 }
 
 exports.getAll = async (req,res,next)=>{
-    const product = await Product.find()
-    res.status(200).send(product)
+    const brand = await Brand.find()
+    const color = await Color.find()
+    const user = await req.session.admin
+    const type = await Type.find()
+    const category = await Category.find()
+    const product = await Product.find().populate(['categoryID','colorID','brandID','typeID'])
+    res.render('admin/product/index', {layout:'./admin_layout', product,brand,color,type,user,category})
 }

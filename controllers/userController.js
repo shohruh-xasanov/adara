@@ -29,15 +29,17 @@ exports.login = async (req,res,next)=>{
         if(!email){
         return res.status(404).json({msg:"Bunaqa foydalanuvchi mavjud emas"})
         }
-        const isMatch = user.matchPassword(password);
-        if (!isMatch) {
-          res.status(404).json({msg:"Password xato"})
-        }else{
-            req.session.admin = user;
-            req.session.isAuth = true;
-            req.session.save()
-            res.status(200).json(user)
-        }
+        user.matchPassword(password, (err, isMatch)=>{
+            if(err) throw err;
+            if (!isMatch) {
+                res.status(404).json({msg:"Password xato"})
+              }else{
+                  req.session.admin = user;
+                  req.session.isAuth = true;
+                  req.session.save()
+                  res.status(200).json(user)
+              }
+        });
     })
 }
 

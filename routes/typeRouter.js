@@ -1,7 +1,11 @@
 const router = require('express').Router()
-const {createType, getAll} = require('../controllers/typeController')
+const {createBrand,getAll,getElementById,elementDelete,updateType} = require('../controllers/typeController')
 
-router.post('/create', createType)
-router.get('/add', getAll)
+router.post('/create',createBrand)
+router.get('/all', getAll)
+router.route('/:id')
+    .get(getElementById)
+    .put(updateType)
+    .delete(elementDelete)
 
 module.exports = router

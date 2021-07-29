@@ -1,0 +1,321 @@
+<div class="page-title-box">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <h4 class="page-title">Dashboard</h4>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+<!-- end page-title -->
+
+<div class="row">
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Kurslar soni</h5>
+                </div>
+                <h3 class="mt-4">0 ta</h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">75%</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-briefcase-check bg-success text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Yangiliklar soni</h5>
+                </div>
+                <h3 class="mt-4">0 ta</h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 88%"
+                        aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">88%</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-tag-text-outline bg-warning text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">O'qituvchilar soni</h5>
+                </div>
+                <h3 class="mt-4">0 ta</h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 68%"
+                        aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">68%</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-buffer bg-danger text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">O'quvchilar soni</h5>
+                </div>
+                <h3 class="mt-4">0 ta</h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 82%"
+                        aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Previous period<span class="float-right">82%</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .file-upload {
+      background-color: #ffffff;
+      width: 600px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+  
+    .file-upload-btn {
+      width: 100%;
+      margin: 0;
+      color: #fff;
+      background: #30419b;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      border-bottom: 4px solid #30419b;
+      transition: all 0.2s ease;
+      outline: none;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  
+    .file-upload-btn:hover {
+      background: #30419b;
+      color: #ffffff;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+  
+    .file-upload-btn:active {
+      border: 0;
+      transition: all 0.2s ease;
+    }
+  
+    .file-upload-content {
+      display: none;
+      text-align: center;
+    }
+  
+    .file-upload-input {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      outline: none;
+      opacity: 0;
+      cursor: pointer;
+    }
+  
+    .image-upload-wrap {
+      margin-top: 20px;
+      border: 4px dashed #30419b;
+      position: relative;
+    }
+  
+    .image-dropping,
+    .image-upload-wrap:hover {
+      background-color: #30419b;
+    }
+  
+    .image-title-wrap {
+      padding: 0 15px 15px 15px;
+      color: #222;
+    }
+  
+    .drag-text {
+      text-align: center;
+    }
+  
+    .drag-text h3 {
+      font-weight: 100;
+      text-transform: uppercase;
+      color: #000;
+      padding: 60px 0;
+    }
+  
+    .file-upload-image {
+      max-height: 300px;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+    }
+  
+    .remove-image {
+      width: 400px;
+      margin: 0;
+      color: rgb(0, 0, 0);
+      background: #30419b;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      border-bottom: 4px solid #30419b;
+      transition: all 0.2s ease;
+      outline: none;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  
+    .remove-image:hover {
+      background: #30419b;
+      color: #ffffff;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+  
+    .remove-image:active {
+      border: 0;
+      transition: all 0.2s ease;
+    }
+  </style>
+    
+    <div class="row">
+      <div class="col-12">
+        <div style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          ">
+          <h4 class="m-3" style="font-weight: 700">Adminlar ro'yhati</h4>
+          <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
+            data-target=".bs-example-modal-lg">
+            Yaratish
+          </button>
+        </div>
+     
+    
+        <div class="card m-b-30">
+          <div class="card-body">
+            <table id="datatable" class="table table-bordered text-center"
+              style="border-collapse: collapse; border-spacing: 0; width: 100%">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Ismi familyasi</th>
+                  <th>Mutaxasisligi</th>
+                  <th>Elektron pochtasi</th>
+                  <th>Yaratilgan sana</th>
+                  <th style="width: 15%">Sozlamalar</th>
+                </tr>
+              </thead>
+    
+              <tbody>
+                <% for(let item of admins) {%>
+                  <tr>
+                    <td>
+                      <div>
+                          <img src="<%=item.image%>" alt="" class="thumb-md rounded-circle mr-2">
+                      </div>
+                  </td>
+                    <td>
+                      <%= item.fullname %>
+                    </td>
+                    <td>
+                      <%= item.direction %>
+                    </td>
+                    <td>
+                      <%= item.email %>
+                    </td>
+                    <td>
+                      <%= item.createdAt.toLocaleString() %>
+                    </td>
+                    <td style="
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: space-around;
+                      align-items: center;
+                    ">
+                      <form method="POST" class="hidden-r" action="<%=`/api/auth/delete/${item._id}?_method=DELETE`%>">
+                        <button type="submit" class="btn btn-danger">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title mt-0" id="myLargeModalLabel">Yaratish</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/api/auth/create" method="POST" >
+              
+              <div class="mb-3">
+                <label for="">Ism Familya </label>
+                <input type="text" name="fullName" class="form-control" placeholder="Ism Familya"/>
+              </div>
+              <div class="mb-3">
+                <label for="">Elektron pochta </label>
+                <input type="text" name="email" class="form-control" placeholder="Elektron pochta" />
+              </div>
+              <div class="mb-3">
+                <label for="">Parol</label>
+                <input type="password" name="password" class="form-control" placeholder="*** *** ***" />
+              </div>
+              <div class="mb-3">
+                <label for="">Roli </label>
+                <input type="text" name="role" class="form-control" placeholder="user" />
+              </div>
+           
+              <button type="submit" class="btn btn-primary col-md-5 mt-3">Saqlash</button>
+            </form>
+            </div>
+          </div>
+          </div>
+          </div>

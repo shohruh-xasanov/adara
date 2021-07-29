@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const typeSchema = new mongoose.Schema({
     name:{
-        type:String,
-        required:true
+        uz:{type:String, required:true},
+        ru:{type:String, required:true}
     },
 },{
     timestamps:true

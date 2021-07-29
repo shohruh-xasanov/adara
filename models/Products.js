@@ -20,6 +20,7 @@ const productSchema = new mongoose.Schema({
     },
     size:{
         type:String,
+        required:true
     },
     description:{
         ru: { type: String, required: true },
@@ -29,9 +30,9 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    designerID:{
+    brandID:{
         type:mongoose.Schema.ObjectId,
-        ref:'Designer',
+        ref:'Brand',
     },
     categoryID:{
             type:mongoose.Schema.ObjectId,
@@ -48,7 +49,7 @@ const productSchema = new mongoose.Schema({
     },
     delverTime :
     {
-        type: String, required:true
+        type: String, required:false
     },
     gender:{
         type:String,

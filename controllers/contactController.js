@@ -19,12 +19,12 @@ exports.deleteOne = async (req, res, next) => {
         res.redirect('/api/contact/seen') 
 } 
 exports.Info = async (req, res,next ) => {
-        const result = await Contact.findById(req.params.id)
+        const result = await Contact.findById({_id:req.params.id})
         const user = req.session.admin; // admin session
         res.render("./admin/contact/info", { layout: "./admin_layout", user, result});
 }
 exports.makeSeen = async (req, res,next ) => {
-        const result = await Contact.findByIdAndUpdate(req.params.id)
+        const result = await Contact.findByIdAndUpdate({_id:req.params.id})
         result.process = "seen"
         result.save()
         const user = req.session.admin; // admin session

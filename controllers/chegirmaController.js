@@ -29,7 +29,7 @@ exports.getAll = async (req,res,next)=>{
       .sort({ date: -1 });
     const user = req.session.admin
     const product = await Product.find()
-    res.status(200).json({result,user,product})
+    res.render('admin/chegirma/index',{layout:'./admin_layout', user, product, result})
 }
 
 exports.deleteChegirma = async (req,res,next)=>{

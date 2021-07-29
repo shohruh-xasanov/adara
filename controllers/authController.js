@@ -10,7 +10,7 @@ exports.super_admin = async (req,res,next)=>{
     req.session.admin = user;
     req.session.isAuth = true;
     req.session.save();
-        res.status(201).json({ success: "Success", data: user });
+        res.redirect('/api/admin/dashboard')
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }
@@ -28,39 +28,46 @@ exports.login = async (req,res,next)=>{
         if(!email){
         return res.status(404).redirect("/admin/login");
         }
-        const isMatch = user.matchPassword(password);
-        if (!isMatch) {
-          res.status(404).redirect("/admin/login");
-        }else{
-            req.session.admin = user;
-            req.session.isAuth = true;
-            req.session.save()
-            res.status(200).json(user)
-        }
+        user.matchPassword(password, (err, isMatch)=>{
+            if(err) throw err;
+            if (!isMatch) {
+                res.status(404).json({msg:"Password xato"})
+              }else{
+                  req.session.admin = user;
+                  req.session.isAuth = true;
+                  req.session.save()
+                  res.status(200).json(user)
+              }
+        });
     })
 }
 
 exports.logout = async (req,res,next)=>{
     req.session.destroy();
-    res.clearCookie("connectid.sid");
+    res.clearCookie("connect.sid");
     res.redirect('/admin/login')
 }
 
 exports.getOne = async (req, res, next) => {
-  const result = await User.findById(req.params.id)
+  const result = await User.findById({_id:req.params.id})
   const user = req.session.admin; 
-  res.render("./admin/profile/index", { layout: "./admin_layout",result, user });
+  res.render("admin/profile/index", { layout: "./admin_layout",result, user });
+}
+
+exports.elementDelete = async (req,res,next)=>{
+    await User.findByIdAndDelete({_id:req.params.id})
+    res.redirect('/api/admin/dashboard')
 }
 
 exports.updateOne = async (req,res,next)=>{
     try {
-        const {fullName,email,uuid,password,role} = req.body;
-        await User.findById({_id:req.params.id}, {fullName,email,password,uuid,role})
-        .save()
+        const {fullName,email,uuid,password} = req.body;
+        await User.findByIdAndUpdate({_id:req.params.id}, {fullName,email,password,uuid})
         .then(user=>{
             req.session.admin = user;
             req.session.save()
         })
+        res.redirect('/api/admin/dashboard')
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }
