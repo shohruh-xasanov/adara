@@ -137,14 +137,14 @@
               <tr>
                 <th>Photo</th>
                 <th>Name</th>
-                <th>Tasnif</th>
-                <th>Color</th>
+                <th style="width: 20%">Tasnif</th>
+                <th style="width: 10%">Color</th>
                 <th>Size</th>
                 <th>Kategoriyasi</th>
                 <th>Sotilganlar soni</th>
                 <th>Narxi</th>
-                <th>Chegirma</th>
-                <th>Yaratilgan sana</th>
+                <th style="width: 10%">Chegirma</th>
+                <th  >Yaratilgan sana</th>
                 <th style="width: 8%">Sozlamalar</th>
               </tr>
             </thead><tbody>
@@ -181,7 +181,10 @@
                     <%= item.categoryID.name.uz %>
                   </td>
                   <td>
-                    <%= item.price %>
+                    <%= item.price %>   
+                    <td>
+                      300000
+                    </td>
                   </td>
                   <td>
                     <%= item.chegirma %>
@@ -195,13 +198,12 @@
                     justify-content: space-around;
                     align-items: center;
                   ">
-                    
-                    <a class="btn btn-warning" href="<%=`/api/product/${item._id}`%>">
-                      <i class="fas fa-cog"></i>
+                    <a class="btn btn-warning" href="<%=`/api/product/edit/${item._id}`%>">
+                      <i class="icofont-binary"></i>
                     </a>
-                    <form method="POST" class="hidden-r" action="<%=`/api/product/${item._id}?_method=DELETE`%>">
+                    <form method="POST"  action="<%=`/api/product/${item._id}?_method=DELETE`%>">
                       <button type="submit" class="btn btn-danger">
-                        <i class="fa fa-trash"></i>
+                        <i class="icofont-bin"></i>
                       </button>
                     </form>
                   </td>
@@ -213,6 +215,7 @@
         </div>
       </div>
     </div>
+  </div>
     <!-- end col -->
   </div>
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -319,7 +322,7 @@
                   </div>
                 </div>
                 <div class="file-upload-content">
-                  <img class="file-upload-image" src="/uploads/course" />
+                  <img class="file-upload-image" src="<%= product.image%>" />
                   <div class="image-title-wrap">
                     <button type="button" onclick="removeUpload()" class="remove-image">
                       Remove <span class="image-title">Uploaded Image</span>
@@ -372,3 +375,5 @@
   });
 
  </script>
+ </div>
+</div>

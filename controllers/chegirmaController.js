@@ -14,9 +14,9 @@ exports.addChegirma = async (req,res,next)=>{
           product.save();
         
           await result.save()
-          res.status(201).json({result})
+          res.redirect('/api/chegirma/all')
     } catch (error) {
-        
+        return res.status(500).json({msg:error.message})
     }
 }
 

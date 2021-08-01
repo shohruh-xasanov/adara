@@ -1,48 +1,96 @@
-<div class="accountbg"></div>
-    
-    <div class="wrapper-page">
-        <div class="card card-pages shadow-none">
+<!DOCTYPE html>
+<html lang="zxx">
 
-            <div class="card-body">
-                
-                <h5 class="font-18 text-center">Hamroh</h5>
+<head>
+    <!-- Page Title -->
+    <title>Dashmin - Multipurpose Bootstrap Dashboard Template</title>
 
-                <form class="form-horizontal m-t-30" action="/api/auth/login" method="POST">
+    <!-- Meta Data -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-                    <div class="form-group">
-                        <div class="col-12">
-                            <label>Email</label>
-                            <input class="form-control" name="email" type="email" required="" placeholder="Email">
-                        </div>
-                    </div>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
 
-                    <div class="form-group">
-                        <div class="col-12">
-                            <label>Password</label>
-                            <input class="form-control" name="password" type="password" required="" placeholder="Password">
-                        </div>
-                    </div>
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
 
-                   
+    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/icofont/icofont.min.css">
+    <link rel="stylesheet" href="/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.css">
+    <!-- ======= END BEGIN GLOBAL MANDATORY STYLES ======= -->
 
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-12">
-                            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Kirish</button>
-                        </div>
-                    </div>
+    <!-- ======= MAIN STYLES ======= -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- ======= END MAIN STYLES ======= -->
 
-                    <!-- <div class="form-group row m-t-30 m-b-0">
-                        <div class="col-sm-7">
-                            <a href="pages-recoverpw.html" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot
-                                your password?</a>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <a href="pages-register.html" class="text-muted">Create an account</a>
-                        </div>
-                    </div> -->
-                </form>
+</head>
+
+<body>
+
+    <div class="mn-vh-100 d-flex align-items-center">
+        <div class="container">
+            <!-- Card -->
+            <div class="card justify-content-center auth-card">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-9">
+                        <h4 class="mb-5 font-20">Welcome To ADARA</h4>
+
+                        <form action="/api/auth/login" method="POST">
+                            <!-- Form Group -->
+                            <div class="form-group mb-20">
+                                <label for="email" class="mb-2 font-14 bold black">Email Address</label>
+                                <input type="email" id="email" name="email" class="theme-input-style" placeholder="Email Address">
+                            </div>
+                            <!-- End Form Group -->
+                            
+                            <!-- Form Group -->
+                            <div class="form-group mb-20">
+                                <label for="password" class="mb-2 font-14 bold black">Password</label>
+                                <input type="password" id="password" name="password" class="theme-input-style" placeholder="********">
+                            </div>
+                            <!-- End Form Group -->
+
+                            <div class="d-flex justify-content-between mb-20">
+                                <div class="d-flex align-items-center">
+                                    <!-- Custom Checkbox -->
+                                    <label class="custom-checkbox position-relative mr-2">
+                                        <input type="checkbox" id="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <!-- End Custom Checkbox -->
+                                    
+                                    <label for="checkbox" class="font-14">Remember Me</label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <button type="submit" class="btn long mr-20">Log In</button>
+                            </div>
+                        </form>
+                    </div>                                    
+                </div>
             </div>
-
+            <!-- End Card -->
         </div>
     </div>
-    <!-- END wrapper -->
+
+    <!-- Footer -->
+    <footer class="footer style--two">
+       Dashmin © 2020 created by <a href="/"> Go to Adara shop</a>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+</body>
+
+</html>

@@ -42,7 +42,7 @@ app.set('views', './views')
 app.use(layout);
 
 app.use('/public',express.static('public'));
-app.use(express.static(path.join(__dirname + "/public")))
+app.use(express.static(path.join(__dirname + "/public/admin1")))
 app.use(express.static(path.join(__dirname + "/public/client")))
 
 app.use('/api/admin', require('./routes/admin/adminRouter'))
@@ -56,7 +56,7 @@ app.use('/api/product', require('./routes/productRouter'));
 app.use('/api/faq', require('./routes/faqRouter'));
 app.use('/api/color', require('./routes/colorRouter'));
 app.use('/api/contact', require('./routes/contactRouter'));
-// app.use('/api/slider', require('./routes/sliderRouter'));
+app.use('/api/slider', require('./routes/sliderRouter'));
 app.use('/api/comment', require('./routes/commitRouter'));
 app.use('/api/chegirma', require('./routes/chegirmaRouter'));
 

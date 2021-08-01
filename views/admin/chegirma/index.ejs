@@ -32,10 +32,10 @@
               <% for(let item of result) {%>
                 <tr>
                   <td>
-                    <%= item.product_ID.name.uz %>
+                    <%= item.productID.name.uz %>
                   </td>
                   <td>
-                    <%= item.product_ID.price %>
+                    <%= item.productID.price %>
                   </td>
                   
                   <td>
@@ -51,7 +51,7 @@
                    
                     <form method="POST" class="hidden-r" action="<%=`/api/chegirma/${item._id}?_method=DELETE`%>">
                       <button type="submit" class="btn btn-danger">
-                        <i class="fa fa-trash"></i>
+                        <i class="icofont-bin"></i>
                       </button>
                     </form>
                   </td>
@@ -75,11 +75,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="/api/chegirma/add" method="POST" >
+          <form action="/api/chegirma/create" method="POST" >
             
             <div class="input-group mt-2" style="display: flex; flex-direction: column">
               <label for="">Kerakli produktni tanlang</label>
-              <select name="product_ID" class="form-control" value="" id="filterTheme">
+              <select name="productID" class="form-control" value="" id="filterTheme">
                 <option style="font-weight: bold">Tanlash ...</option>
                 <% for (let item of product) {%>
                   <option value="<%= item._id %>">
@@ -99,6 +99,8 @@
       </div>
     </div>
   </div>
+  
+</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
  
