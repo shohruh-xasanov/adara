@@ -51,7 +51,7 @@ userSchema.pre('save', async function(next){
 //  Match user entered password to hashed password in database
 userSchema.methods.matchPassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
+        if (err) return res.redirect('/api/auth/login');
         cb(null, isMatch);
     });
 };

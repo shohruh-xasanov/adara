@@ -3,7 +3,7 @@ exports.isAdminAuth = async (req,res,next)=>{
     if(req.session.admin){
         next()
     }else{
-        res.redirect('/api/admin/login')
+        res.redirect('/api/auth/login')
     }
 }
 

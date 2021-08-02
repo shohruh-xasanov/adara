@@ -210,8 +210,19 @@
                 </tr>
                 <% } %>
             </tbody>
-  
-          </table>
+          </table>                       
+          <div class="pagination-wrap">
+          <ul>
+              <li class="prev"><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">...</a></li>
+              <li><a href="#">10</a></li>
+              <li class="next"><a href="#">Next</a></li>
+          </ul>
+        </div>
         </div>
       </div>
     </div>
@@ -250,35 +261,41 @@
 
             
 
-          <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
-            <label for="">Kerakli kategoriyalarni tanlang</label>
-            <select name="categoryID" class="form-control" value="" id="filterTheme">
-                <option style="font-weight: bold">Tanlash ...</option>
+            <div class="form-group mb-4">
+            <label for=""  class="mb-2 black bold d-block" >Kerakli kategoriyalarni tanlang</label>
+            <select name="categoryID" class="theme-input-style" value="" >
+              <div class="custom-select style--two">
+                <option style="font-weight:100">Tanlash ...</option>
                 <% for (let item of category) {%>
                 <option value="<%= item._id %>"><%= item.name.uz %></option>
                 <% } %>
+              </div>
             </select>
-            </div> <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
-              <label for="">Kerakli Brandni tanlang</label>
-              <select name="brandID" class="form-control" value="" id="filterTheme">
-                  <option style="font-weight: bold">Tanlash ...</option>
+            </div>
+            
+            <div class="form-group mb-4">
+              <label for=""  class="mb-2 black bold d-block" >Kerakli Brandni tanlang</label>
+              <select name="brandID" class="theme-input-style" value="" id="">
+                <div class="custom-select style--two">
+                  <option style="font-weight:100">Tanlash ...</option>
                   <% for (let item of brand) {%>
                   <option value="<%= item._id %>"><%= item.name.uz %></option>
                   <% } %>
+                </div>
               </select>
               </div>
-  
 
-            
-          <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
-            <label for="">Kerakli Tipni tanlang</label>
-            <select name="typeID" class="form-control" value="" id="filterTheme">
-                <option style="font-weight: bold">Tanlash ...</option>
-                <% for (let item of type) {%>
-                <option value="<%= item._id %>"><%= item.name.uz %></option>
-                <% } %>
-            </select>
-            </div>
+              <div class="form-group mb-4">
+                <label for=""  class="mb-2 black bold d-block" >Kerakli Tipni tanlang</label>
+                <select name="typeID" class="theme-input-style" value="" id="">
+                  <div class="custom-select style--two">
+                    <option style="font-weight:100">Tanlash ...</option>
+                    <% for (let item of type) {%>
+                    <option value="<%= item._id %>"><%= item.name.uz %></option>
+                    <% } %>
+                  </div>
+                </select>
+                </div>
 
             <div class="mb-3">
               <label for="">Price </label>
@@ -289,28 +306,27 @@
               <input type="text" name="size" class="form-control"  />
             </div>
 
-
-          
-
            
-            <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
-              <label for="">Kerakli Ranglarni tanlang</label>
-              <select name="colorID" class="form-control" value="" id="filterTheme" data-placeholder="multiple-select" multiple="multiple">
+            <div class="form-group mb-4" >
+              <label for="exampleSelect2" class="mb-2 black bold d-block">Kerakli ranglarni tanlang</label>
+              <select name="colorID" class="theme-input-style multiple" value="" id="filterTheme" data-placeholder="multiple-select" multiple="multiple">
                   <option style="font-weight: bold">Tanlash ...</option>
                   <% for (let item of color) {%>
                   <option value="<%= item._id %>"><%= item.name %></option>
                   <% } %>
               </select>
               </div>
-          <div class="input-group mt-2 mb-2" style="display: flex; flex-direction: column">
+          <div class="input-group mt-2 mb-2" >
             <label for="">Kerakli Gender turini tanlang</label>
-            <select name="gender" class="form-control" value="" id="filterTheme"  >
-                <option  id="example-text-input"   class="custome-dropdown" style="font-weight: bold">Tanlash ...</option>
+            <select name="gender" class="theme-input-style" value="" id="filterTheme"  >
+              <div class="custom-select style--two">
+                <option  id="example-text-input"   class="custome-dropdown" style="font-weight:100">Tanlash ...</option>
                 <option value="man">Erkaklarniki</option>
                 <option value="woman">Ayollarniki</option>
                 <option value="0">null</option>
             </select>
             </div>
+         </div>
 
           <div class="mb-3">
             <div class="input-group mb-3 pb-3 mt-2">

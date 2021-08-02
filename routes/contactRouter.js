@@ -8,13 +8,13 @@ Info,
 makeSeen,
 deleteOne,
 } = require('../controllers/contactController')
-
+const {isAdminAuth} = require('../middleware/auth')
 router.post('/add', createOne)
-router.get('/unseen',Unseen)
-router.get('/seen',Seen)
-router.get('/:id',Info)
-router.put('/:id',makeSeen)
-router.delete('/:id',deleteOne)
+router.get('/unseen',isAdminAuth,Unseen)
+router.get('/seen',isAdminAuth,Seen)
+router.get('/:id',isAdminAuth,Info)
+router.put('/:id',isAdminAuth,makeSeen)
+router.delete('/:id',isAdminAuth,deleteOne)
 
 
 module.exports = router 

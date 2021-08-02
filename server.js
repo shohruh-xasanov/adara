@@ -11,6 +11,7 @@ const session = require('express-session')
 const ejs = require('ejs')
 const methodOverride = require('method-override')
 const app = express()
+const compression = require('compression')
 connectDB()
 
 app.use(
@@ -34,7 +35,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(methodOverride('_method',{
     methods:['POST', 'GET']
 }))
-
+app.use(compression())
 app.use(cookieParser())
 app.use(cors())
 app.set('view engine', 'ejs')
@@ -45,8 +46,13 @@ app.use('/public',express.static('public'));
 app.use(express.static(path.join(__dirname + "/public/admin1")))
 app.use(express.static(path.join(__dirname + "/public/client")))
 
+app.use('/', require('./routes/client/clintRouter'))
+
+
+
 app.use('/api/admin', require('./routes/admin/adminRouter'))
 app.use('/api/category', require('./routes/categoryRouter'))
+app.use('/api/collection', require('./routes/collectionRouter'))
 app.use('/api/brand', require('./routes/brandRouter'))
 app.use('/api/type', require('./routes/typeRouter'))
 app.use('/api/user', require('./routes/userRouter'));
@@ -64,9 +70,6 @@ app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
 })
 
-app.get('/', (req,res)=>{
-    res.render('client/index',{layout:"./client_layout"})
-})
 app.get('/about', (req,res)=>{
     res.render('client/about-us',{layout:"./client_layout"})
 })

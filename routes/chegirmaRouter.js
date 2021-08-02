@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const {addChegirma,getAll,deleteChegirma} = require('../controllers/chegirmaController')
-
-router.post('/create', addChegirma)
-router.get('/all', getAll)
-router.delete('/delete', deleteChegirma)
+const {isAdminAuth} = require('../middleware/auth')
+router.post('/create',isAdminAuth, addChegirma)
+router.get('/all',isAdminAuth, getAll)
+router.delete('/delete', isAdminAuth,deleteChegirma)
 
 module.exports = router

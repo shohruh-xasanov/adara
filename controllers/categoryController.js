@@ -6,7 +6,8 @@ exports.addCategory = async (req,res,next)=>{
             name: {
             uz: req.body.nameuz,
             ru: req.body.nameru
-        }
+        },
+            typeID:req.body.typeID
         })
         await category.save()
         res.redirect('/api/category/all')

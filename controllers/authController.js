@@ -18,7 +18,7 @@ exports.super_admin = async (req,res,next)=>{
 
 exports.login = async (req,res,next)=>{
     const {email, password} = req.body
-    if (!email || !password) {
+    if (!email && !password) {
       res.redirect("/api/auth/login");
     }
     await User.findOne({email}, (err,user)=>{
@@ -29,9 +29,11 @@ exports.login = async (req,res,next)=>{
         return res.status(404).redirect("/api/auth/login");
         }
         user.matchPassword(password, (err, isMatch)=>{
-            if(err) throw err;
+            if(err){
+               return res.redirect('/api/auth/login')
+            }
             if (!isMatch) {
-                res.status(404).redirect('/api/auth/login')
+               return res.status(404).redirect('/api/auth/login')
               }else{
                   req.session.admin = user;
                   req.session.isAuth = true;
@@ -61,7 +63,9 @@ exports.elementDelete = async (req,res,next)=>{
 
 exports.adminLogin = async (req,res,next)=>{
     if(req.session.admin){
-        res.redirect('/api/auth/dashboard')
+        res.redirect('/api/admin/dashboard')
+    }if(req.session.user){
+        res.redirect('/')
     }
     res.render('admin/login/index', {layout:false})
 }

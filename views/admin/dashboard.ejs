@@ -14,7 +14,6 @@
     <!-- end row -->
 </div>
 <!-- end page-title -->
-
 <div class="row">
 
     <div class="col-sm-6 col-xl-3">
@@ -211,6 +210,8 @@
       transition: all 0.2s ease;
     }
   </style>
+  
+    
     
     <div class="row">
       <div class="col-12">
@@ -242,7 +243,8 @@
                   <th style="width: 15%">Sozlamalar</th>
                 </tr>
               </thead>
-    
+            </div>
+            
               <tbody>
                 <% for(let item of admins) {%>
                   <tr>
@@ -279,6 +281,18 @@
                   <% } %>
               </tbody>
             </table>
+            <div class="pagination-wrap">
+              <ul>
+                  <li class="prev"><a href="#">Prev</a></li>
+                  <li><a href="#">1</a></li>
+                  <li class="active"><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">...</a></li>
+                  <li><a href="#">10</a></li>
+                  <li class="next"><a href="#">Next</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -319,5 +333,6 @@
             </div>
           </div>
           </div>
-          </div>
-          </div>
+</body>
+
+</html>

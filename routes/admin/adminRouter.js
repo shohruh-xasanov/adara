@@ -1,7 +1,6 @@
-const {dashboard,login} = require('../../controllers/admin/index')
+const {dashboard} = require('../../controllers/admin/index')
 const router = require('express').Router()
-
-router.post('/login', login)
-router.get('/dashboard', dashboard)
+const {isAdminAuth} = require('../../middleware/auth')
+router.get('/dashboard',isAdminAuth, dashboard)
 
 module.exports = router

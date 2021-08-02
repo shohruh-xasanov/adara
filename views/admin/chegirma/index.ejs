@@ -56,9 +56,21 @@
                     </form>
                   </td>
                 </tr>
-                <% } %>
+                <% } %>        
             </tbody>
           </table>
+          <div class="pagination-wrap">
+            <ul>
+                <li class="prev"><a href="#">Prev</a></li>
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">10</a></li>
+                <li class="next"><a href="#">Next</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -77,17 +89,18 @@
         <div class="modal-body">
           <form action="/api/chegirma/create" method="POST" >
             
-            <div class="input-group mt-2" style="display: flex; flex-direction: column">
-              <label for="">Kerakli produktni tanlang</label>
-              <select name="productID" class="form-control" value="" id="filterTheme">
-                <option style="font-weight: bold">Tanlash ...</option>
-                <% for (let item of product) {%>
-                  <option value="<%= item._id %>">
-                    <%= item.name.uz %>
-                  </option>
-                  <% } %>
-              </select>
-            </div>
+              <div class="form-group mb-4">
+                <label for=""  class="mb-2 black bold d-block" >Kerakli produktni tanlang</label>
+                <select name="productID" class="theme-input-style" value="" id="">
+                  <div class="custom-select style--two">
+                    <option style="font-weight:100">Tanlash ...</option>
+                    <% for (let item of product) {%>
+                    <option value="<%= item._id %>"><%= item.name.uz %></option>
+                    <% } %>
+                  </div>
+                </select>
+                </div>
+           
             <div class="mb-3">
               <label for="">Chegirma narxi</label>
               <input type="number" name="amount" class="form-control"  />

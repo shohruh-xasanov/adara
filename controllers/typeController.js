@@ -9,7 +9,7 @@ exports.createBrand = async (req,res,next)=>{
             }
         })
         await type.save()
-        res.redirect('/api/brand/all')
+        res.redirect('/api/type/all')
     } catch (error) {
         return res.status(500).json({msg:error.message})
     }

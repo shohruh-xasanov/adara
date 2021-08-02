@@ -144,7 +144,7 @@
                                     
                                     <div class="navbar-wrap main-menu d-none d-lg-flex">
                                         <ul class="navigation">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="/">Home</a></li>
                                             <li class="has--mega--menu"><a href="#">Clothing</a>
                                                 <ul class="mega-menu">
                                                     <li class="mega-menu-wrap">
@@ -159,14 +159,10 @@
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                         </ul>
                                                         <ul class="mega-menu-col">
-                                                            <li class="mega-title"><a href="#">DESIGNERS</a></li>
-                                                            <li><a href="shop-sidebar.html">Variable Product</a></li>
-                                                            <li><a href="shop-sidebar.html">External Product</a></li>
-                                                            <li><a href="shop-sidebar.html">Other Shop Pages</a></li>
-                                                            <li><a href="shop-sidebar.html">Categories</a></li>
-                                                            <li><a href="shop-sidebar.html">Collection</a></li>
-                                                            <li><a href="shop-sidebar.html">LookBook</a></li>
-                                                            <li><a href="cart.html">Shopping Cart</a></li>
+                                                            <li class="mega-title"><a href="#">BRANDS</a></li>
+                                                                <%for(item of brand) {%>
+                                                            <li><a href="shop-sidebar.html"><%= item.name.uz%></a></li>
+                                                                <% }%>
                                                         </ul>
                                                         <ul class="mega-menu-col sub-cat-post">
                                                             <li>
@@ -201,14 +197,10 @@
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                         </ul>
                                                         <ul class="mega-menu-col">
-                                                            <li class="mega-title"><a href="#">DESIGNERS</a></li>
-                                                            <li><a href="shop-sidebar.html">Variable Product</a></li>
-                                                            <li><a href="shop-sidebar.html">External Product</a></li>
-                                                            <li><a href="shop-sidebar.html">Other Shop Pages</a></li>
-                                                            <li><a href="shop-sidebar.html">Categories</a></li>
-                                                            <li><a href="shop-sidebar.html">Collection</a></li>
-                                                            <li><a href="shop-sidebar.html">LookBook</a></li>
-                                                            <li><a href="cart.html">Shopping Cart</a></li>
+                                                            <li class="mega-title"><a href="#">BRANDS</a></li>
+                                                            <%for(item of brand) {%>
+                                                        <li><a href="shop-sidebar.html"><%= item.name.uz%></a></li>
+                                                            <% }%>
                                                         </ul>
                                                         <ul class="mega-menu-col sub-cat-post">
                                                             <li>
@@ -243,14 +235,10 @@
                                                             <li><a href="checkout.html">Checkout Page</a></li>
                                                         </ul>
                                                         <ul class="mega-menu-col">
-                                                            <li class="mega-title"><a href="#">DESIGNERS</a></li>
-                                                            <li><a href="shop-sidebar.html">Variable Product</a></li>
-                                                            <li><a href="shop-sidebar.html">External Product</a></li>
-                                                            <li><a href="shop-sidebar.html">Other Shop Pages</a></li>
-                                                            <li><a href="shop-sidebar.html">Categories</a></li>
-                                                            <li><a href="shop-sidebar.html">Collection</a></li>
-                                                            <li><a href="shop-sidebar.html">LookBook</a></li>
-                                                            <li><a href="cart.htAccessoriesml">Shopping Cart</a></li>
+                                                            <li class="mega-title"><a href="#">BRANDS</a></li>
+                                                            <%for(item of brand) {%>
+                                                        <li><a href="shop-sidebar.html"><%= item.name.uz%></a></li>
+                                                            <% }%>
                                                         </ul>
                                                         <ul class="mega-menu-col sub-cat-post">
                                                             <li>
@@ -436,8 +424,6 @@
                                 <nav class="menu-links">
                                     <ul>
                                         <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="shop-sidebar.html">Store</a></li>
-                                        <li><a href="#">Locations</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                         <li><a href="contact.html">Support</a></li>
                                         <li><a href="#">Policy</a></li>

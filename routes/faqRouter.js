@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router()
 const {createOne, getItem, getItems, updateOne, deleteOne} = require('../controllers/faqController')
-
-router.post('/create', createOne)
-router.get('/all',getItems)
-router.get('/:id',getItem)
-router.put('/:id',updateOne)
-router.delete('/:id',deleteOne)
+const {isAdminAuth} = require('../middleware/auth')
+router.post('/create',isAdminAuth, createOne)
+router.get('/all',isAdminAuth,getItems)
+router.get('/:id',isAdminAuth,getItem)
+router.put('/:id',isAdminAuth,updateOne)
+router.delete('/:id',isAdminAuth,deleteOne)
 
 
 module.exports = router 
