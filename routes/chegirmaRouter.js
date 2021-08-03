@@ -3,6 +3,6 @@ const {addChegirma,getAll,deleteChegirma} = require('../controllers/chegirmaCont
 const {isAdminAuth} = require('../middleware/auth')
 router.post('/create',isAdminAuth, addChegirma)
 router.get('/all',isAdminAuth, getAll)
-router.delete('/delete', isAdminAuth,deleteChegirma)
+router.delete('/:id', isAdminAuth,deleteChegirma)
 
 module.exports = router

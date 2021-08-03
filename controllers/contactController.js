@@ -1,18 +1,20 @@
 const Contact = require('../models/Contact');
 
 exports.createOne = async (req, res, next) => {
-        const result = new Contact({
+        try {
+       const result = new Contact({
             message: req.body.message,
             tel: req.body.tel,
-            name: req.body.name
+            name: req.body.name,
+            email:req.body.email,
+            subject: req.body.subject
         })
         result.save()
-        .then(() => {
-                res.status(201).json({message: "Data is created", data: result})
-        })
-        .catch((error) => {
-            res.status(400).json({message: "Data is not created", data: error})
-        })
+        res.status(201).redirect('/contact')     
+        } catch (error) {
+              return res.status(500).redirect('/contact') 
+        }
+        
 }
 exports.deleteOne = async (req, res, next) => {
         await Contact.findByIdAndDelete({ _id: req.params.id });

@@ -1,4 +1,5 @@
 const Category = require('../models/Category')
+const Type = require('../models/Type')
 
 exports.addCategory = async (req,res,next)=>{
     try {
@@ -18,8 +19,9 @@ exports.addCategory = async (req,res,next)=>{
 
 exports.getAll = async (req,res,next)=>{
     const user = req.session.admin
-    const category = await Category.find()
-    res.render('admin/category/index',{layout:'./admin_layout', category,user})
+    const type = await Type.find()
+    const category = await Category.find().populate('typeID').sort({createdAt:-1})
+    res.render('admin/category/index',{layout:'./admin_layout', type,category,user})
 }
 
 exports.getById = async (req,res,next) => {

@@ -235,9 +235,7 @@
               style="border-collapse: collapse; border-spacing: 0; width: 100%">
               <thead>
                 <tr>
-                  <th>Photo</th>
                   <th>Ismi familyasi</th>
-                  <th>Mutaxasisligi</th>
                   <th>Elektron pochtasi</th>
                   <th>Yaratilgan sana</th>
                   <th style="width: 15%">Sozlamalar</th>
@@ -249,15 +247,7 @@
                 <% for(let item of admins) {%>
                   <tr>
                     <td>
-                      <div>
-                          <img src="<%=item.image%>" alt="" class="thumb-md rounded-circle mr-2">
-                      </div>
-                  </td>
-                    <td>
-                      <%= item.fullname %>
-                    </td>
-                    <td>
-                      <%= item.direction %>
+                      <%= item.fullName %>
                     </td>
                     <td>
                       <%= item.email %>

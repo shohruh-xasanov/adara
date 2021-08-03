@@ -47,7 +47,7 @@ app.use(express.static(path.join(__dirname + "/public/admin1")))
 app.use(express.static(path.join(__dirname + "/public/client")))
 
 app.use('/', require('./routes/client/clintRouter'))
-
+app.use('/product', require('./routes/client/productRouter'))
 
 
 app.use('/api/admin', require('./routes/admin/adminRouter'))
@@ -70,20 +70,11 @@ app.listen(PORT, ()=>{
     console.log('Server is running to localhost')
 })
 
-app.get('/about', (req,res)=>{
-    res.render('client/about-us',{layout:"./client_layout"})
-})
-app.get('/contact', (req,res)=>{
-    res.render('client/contact',{layout:"./client_layout"})
-})
 app.get('/checkout', (req,res)=>{
     res.render('client/checkout',{layout:"./client_layout"})
 })
 app.get('/cart', (req,res)=>{
     res.render('client/cart',{layout:"./client_layout"})
-})
-app.get('/categories', (req,res)=>{
-    res.render('client/shop-sidebar',{layout:"./client_layout"})
 })
 app.get('/shop', (req,res)=>{
     res.render('client/shop',{layout:"./client_layout"})

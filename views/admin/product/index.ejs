@@ -251,11 +251,11 @@
               <input type="text" name="nameru" class="form-control"  />
             </div>
             <div class="mb-3">
-              <label for="">Tasnif </label>
+              <label for="">Tafsifi </label>
               <input type="text" name="descriptionuz" class="form-control"  />
             </div>
             <div class="mb-3">
-              <label for="">Классификация </label>
+              <label for="">Описание </label>
               <input type="text" name="descriptionru" class="form-control"  />
             </div>
 
@@ -277,7 +277,7 @@
               <label for=""  class="mb-2 black bold d-block" >Kerakli Brandni tanlang</label>
               <select name="brandID" class="theme-input-style" value="" id="">
                 <div class="custom-select style--two">
-                  <option style="font-weight:100">Tanlash ...</option>
+                  <option value="61094c432e1d1b2b80c6dab0" style="font-weight:100">Tanlash ...</option>
                   <% for (let item of brand) {%>
                   <option value="<%= item._id %>"><%= item.name.uz %></option>
                   <% } %>
@@ -320,10 +320,9 @@
             <label for="">Kerakli Gender turini tanlang</label>
             <select name="gender" class="theme-input-style" value="" id="filterTheme"  >
               <div class="custom-select style--two">
-                <option  id="example-text-input"   class="custome-dropdown" style="font-weight:100">Tanlash ...</option>
+                <option value="0">null</option>
                 <option value="man">Erkaklarniki</option>
                 <option value="woman">Ayollarniki</option>
-                <option value="0">null</option>
             </select>
             </div>
          </div>

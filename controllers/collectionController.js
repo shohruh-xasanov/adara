@@ -1,5 +1,5 @@
 const Collection = require('../models/Collection')
-
+const Product = require('../models/Products')
 exports.createCollection = async (req,res,next)=>{
     try{
         
@@ -13,9 +13,10 @@ exports.createCollection = async (req,res,next)=>{
 }
 
 exports.getAll = async (req,res,next)=>{
-    const collection = await Collection.find()
+    const result = await Collection.find()
+    const product = await Product.find()
     const user = req.session.admin
-    res.render('admin/collection/index', {layout:'./admin_layout', user, collection})
+    res.render('admin/collection/index', {layout:'./admin_layout', user, product, result})
 }
 
 exports.elementById = async (req,res,next)=>{

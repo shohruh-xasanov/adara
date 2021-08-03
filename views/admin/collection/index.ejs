@@ -1,0 +1,119 @@
+
+  <div class="row">
+  <div class="col-12">
+    <div style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      ">
+      <h4 class="m-3" style="font-weight: 700">Kolleksiyalar uchun ro'yhat</h4>
+      <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
+        data-target=".bs-example-modal-lg">
+        Yaratish
+      </button>
+    </div>
+ 
+
+    <div class="card m-b-30">
+      <div class="card-body">
+        <table id="datatable" class="table table-bordered text-center"
+          style="border-collapse: collapse; border-spacing: 0; width: 100%">
+          <thead>
+            <tr>
+              <th>Kolleksiyalar</th>
+              <th>Mahsulotlar</th>
+              <th>Yaratilgan sana</th>
+              <th style="width: 15%">Sozlamalar</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% for(let item of result) {%>
+              <tr>
+                <td>
+                  <%= item.result.name.uz %>
+                </td>
+                <td>
+                  <%= item.productID.name.uz %>
+                </td>
+                
+                <td>
+                  <%= moment(item.createdAt).format("DD-MM-YYYY") %>
+                </td>
+                <td style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-around;
+                  align-items: center;
+                ">
+                  
+                 
+                  <form method="POST" class="hidden-r" action="<%=`/api/collection/${item._id}?_method=DELETE`%>">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="icofont-bin"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <% } %>        
+          </tbody>
+        </table>
+        <div class="pagination-wrap">
+          <ul>
+              <li class="prev"><a href="#">Prev</a></li>
+              <li><a href="#">1</a></li>
+              <li class="active"><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">...</a></li>
+              <li><a href="#">10</a></li>
+              <li class="next"><a href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end col -->
+</div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-0" id="myLargeModalLabel">Yaratish</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/api/collection/create" method="POST" >
+          <div class="mb-3">
+            <label for="">Nomi </label>
+            <input type="text" name="nameuz" class="form-control"  />
+          </div>
+          <div class="mb-3">
+            <label for="">Название </label>
+            <input type="text" name="nameru" class="form-control"  />
+          </div>
+            
+          <div class="form-group mb-4" >
+            <label for="exampleSelect2" class="mb-2 black bold d-block">Kerakli mahsulotlarni tanlang</label>
+            <select name="productID" class="theme-input-style multiple" value="" id="filterTheme" data-placeholder="multiple-select" multiple="multiple">
+                <option style="font-weight: bold">Tanlash ...</option>
+                <% for (let item of product) {%>
+                <option value="<%= item._id %>"><%= item.name.uz %></option>
+                <% } %>
+            </select>
+            </div>
+          
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

@@ -3,12 +3,12 @@
         <main>
 
             <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg04.jpg">
+            <section class="breadcrumb-area breadcrumb-bg" data-background="/public/uploads/<%=`${slider[0].image}`%>">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="breadcrumb-content">
-                                <h2>Contact Us</h2>
+                                <h2 >Contact Us</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -32,22 +32,22 @@
                                     <span class="sub-title">Contact Us Now</span>
                                     <h2 class="title">Write a Message</h2>
                                 </div>
-                                <form action="#" class="contact-form">
+                                <form action="/api/contact/add" method="POST" class="contact-form">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" placeholder="Your Name *">
+                                            <input type="text" name="name" placeholder="Your Name *">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="email" placeholder="Your Email *">
+                                            <input type="email" name="email" placeholder="Your Email *">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" placeholder="Your Phone">
+                                            <input type="text" name="tel" placeholder="Your Phone">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" placeholder="Subject">
+                                            <input type="text" name="subject" placeholder="Subject">
                                         </div>
                                     </div>
-                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                    <textarea name="message" name="message" placeholder="Your Message"></textarea>
                                     <button class="btn">Submit</button>
                                 </form>
                             </div>
@@ -56,7 +56,8 @@
                             <aside class="contact-sidebar">
                                 <div class="widget">
                                     <div class="contact-sidebar-img mb-20">
-                                        <img src="img/images/contact_img.jpg" alt="">
+                                        <h4>Contact-us</h4>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque consectetur libero facere deleniti, soluta assumenda asperiores, fuga, ipsa sed repellendus ex magnam dolorum. Obcaecati, quidem eaque! Minus repudiandae quo voluptatem?</p>
                                     </div>
                                 </div>
                                 <div class="widget">
@@ -66,7 +67,7 @@
                                                 <div class="icon"><i class="flaticon-phone-call"></i></div>
                                                 <div class="content">
                                                     <h5>Phone</h5>
-                                                    <p><a href="tel:0321654987">+9 444 652 0000</a></p>
+                                                    <p><a href="995939803">+998 99 593 98 03</a></p>
                                                 </div>
                                             </li>
                                             <li>
