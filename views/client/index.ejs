@@ -18,7 +18,7 @@
                                             <h3 class="sub-title animated" data-animation-in="fadeInUp" data-delay-in=".2">Top deal !</h3>
                                             <h2 class="title animated" data-animation-in="fadeInUp" data-delay-in=".4"><%= chegirma[0].name.uz%></h2>
                                             <p class="animated" data-animation-in="fadeInUp" data-delay-in=".6">Get up to <%= Math.floor(100-(chegirma[0].chegirma/chegirma[0].prev_payment)*100)%>% off Today Only</p>
-                                            <a href="shop-sidebar.html" class="btn animated" data-animation-in="fadeInUp" data-delay-in=".8">Shop now</a>
+                                            <a href="/product/<%= chegirma[0]._id%>" class="btn animated" data-animation-in="fadeInUp" data-delay-in=".8">Shop now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -161,13 +161,13 @@
                                             <%if(women[i].chegirma>0) {%>
                                             <div class="discount-tag"><%= Math.floor(100-(women[i].chegirma/women[i].prev_payment)*100)%>%</div>
                                             <%}%>
-                                            <a href="shop-details.html">
+                                            <a href="/product/<%= women[i]._id%>">
                                                 <img src="<%=women[i].images[0].url%>" alt="">
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
                                                     <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                    <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                                                    <li><a href="/product/<%= women[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -179,7 +179,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </div>
-                                            <h5><a href="shop-details.html"><%= women[i].name.uz%></a></h5>
+                                            <h5><a href="/product/<%= women[i]._id%>"><%= women[i].name.uz%></a></h5>
                                             <p class="price"><%= women[i].price%> So'm</p>
                                             <div class="features-product-bottom">
                                                 <ul>
@@ -207,13 +207,13 @@
                                             <%if(shoes[i].chegirma>0) {%>
                                             <div class="discount-tag"><%= Math.floor(100-(shoes[i].chegirma/shoes[i].prev_payment)*100)%>%</div>
                                             <%}%>
-                                            <a href="shop-details.html">
+                                            <a href="/product/<%= shoes[i]._id%>">
                                                 <img src="<%=shoes[i].images[0].url%>" alt="">
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
                                                     <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                    <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                                                    <li><a href="/product/<%= shoes[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -225,7 +225,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </div>
-                                            <h5><a href="shop-details.html"><%= shoes[i].name.uz%></a></h5>
+                                            <h5><a href="/product/<%= shoes[i]._id%>"><%= shoes[i].name.uz%></a></h5>
                                             <p class="price"><%= shoes[i].price%> So'm</p>
                                             <div class="features-product-bottom">
                                                 <ul>
@@ -253,13 +253,13 @@
                                             <%if(clothing[i].chegirma>0) {%>
                                             <div class="discount-tag"><%= Math.floor(100-(clothing[i].chegirma/clothing[i].prev_payment)*100)%>%</div>
                                             <%}%>
-                                            <a href="shop-details.html">
+                                            <a href="/product/<%= clothing[i]._id%>">
                                                 <img src="<%=clothing[i].images[0].url%>" alt="">
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
                                                     <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                    <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                                                    <li><a href="/product/<%= clothing[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -271,7 +271,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </div>
-                                            <h5><a href="shop-details.html"><%= clothing[i].name.uz%></a></h5>
+                                            <h5><a href="/product/<%= clothing[i]._id%>"><%= clothing[i].name.uz%></a></h5>
                                             <p class="price"><%= clothing[i].price%> So'm</p>
                                             <div class="features-product-bottom">
                                                 <ul>
@@ -307,7 +307,7 @@
                             <div class="discount-content text-center">
                                 <span style="color:black;">STOCK IS LIMITED</span>
                                 <h2 style="color:black;" >Winter Collection End of Season Sale upto 30%</h2>
-                                <a href="shop-sidebar.html" class="btn" style="color:black;">shop now</a>
+                                <a href="/product/<%= chegirma[1]._id%>" class="btn" style="color:black;">shop now</a>
                             </div>
                         </div>
                     </div>
