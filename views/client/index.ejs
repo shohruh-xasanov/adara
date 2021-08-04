@@ -115,13 +115,13 @@
                                             <%if(men[i].chegirma>0) {%>
                                             <div class="discount-tag"><%= Math.floor(100-(men[i].chegirma/men[i].prev_payment)*100)%>%</div>
                                             <%}%>
-                                            <a href="shop-details.html">
+                                            <a href="/product/<%= men[i]._id%>">
                                                 <img src="<%=men[i].images[0].url%>" alt="">
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
                                                     <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                    <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                                                    <li><a href="/product/<%= men[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -133,7 +133,7 @@
                                                 <i class="far fa-star"></i>
                                                 <i class="far fa-star"></i>
                                             </div>
-                                            <h5><a href="shop-details.html"><%= men[i].name.uz%></a></h5>
+                                            <h5><a href="/product/<%= men[i]._id%>"><%= men[i].name.uz%></a></h5>
                                             <p class="price"><%= men[i].price%> So'm</p>
                                             <div class="features-product-bottom">
                                                 <ul>
