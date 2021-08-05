@@ -34,11 +34,10 @@
                                         <thead>
                                             <tr>
                                                 <th class="product-thumbnail"></th>
-                                                <th class="product-name">Product</th>
-                                                <th class="product-price">Price</th>
-                                                <th class="product-quantity">QUANTITY</th>
-                                                <th class="product-subtotal">SUBTOTAL</th>
-                                                <th class="product-delete">Parametr</th>
+                                                <th class="product-name">Mahsulot</th>
+                                                <th class="product-price">Narxi</th>
+                                                <th class="product-subtotal">Chegirma</th>
+                                                <th class="product-delete" style="width: 22%;">Parametr</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -49,25 +48,22 @@
                                                     <h4><a href="/product/<%= item.productID._id%>"><%= item.productID.name.uz%></a></h4>
                                                 </td>
                                                 <td class="product-price"><%= item.productID.price%> So'm</td>
-                                                <td class="product-quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <form action="#" class="num-block">
-                                                            <input type="text" class="in-num" value="1" readonly="">
-                                                            <div class="qtybutton-box">
-                                                                <span class="plus"><img src="/img/icon/plus.png" alt=""></span>
-                                                                <span class="minus dis"><img src="/img/icon/minus.png" alt=""></span>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal"><span><%= item.productID.price%> So'm</span></td>                
-                                                <td class="product-delete">
-                                                    <form method="POST" class="hidden-r" action="<%=`/api/basket/${item._id}?_method=DELETE`%>">
-                                                    <button type="submit" class="btn btn-danger">
+                                                <td class="product-subtotal"><span><%= item.productID.chegirma%> So'm</span></td>   <td style="
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: space-around;
+                                                align-items: center;
+                                              ">
+                                                
+                                                  <button type="submit" class="btn btn-danger">
+                                                    <a href="/api/order/<%= item._id%>"><i class="flaticon-shopping-bag"></i></a>
+                                                  </button>
+                                                <form method="POST" class="hidden-r" action="<%=`/api/basket/${item._id}?_method=DELETE`%>">
+                                                  <button type="submit" class="btn btn-danger">
                                                     <a href="#"><i class="flaticon-trash"></i></a>
-                                                    </button>
-                                                    </form>
-                                                </td>
+                                                  </button>
+                                                </form>
+                                              </td>  
                                             </tr>
                                             <% }%>
                                         </tbody>
@@ -79,22 +75,15 @@
                                 <div class="shop-cart-widget">
                                     <form action="#">
                                         <ul>
-                                            <li class="sub-total"><span>SUBTOTAL</span> $ 136.00</li>
-                                            <li>
-                                                <span>SHIPPING</span>
-                                                <div class="shop-check-wrap">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                        <label class="custom-control-label" for="customCheck1">FLAT RATE: $15</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                        <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
-                                                    </div>
-                                                    <a href="#" class="calculate">Calculate shipping</a>
-                                                </div>
-                                            </li>
-                                            <li class="cart-total-amount"><span>TOTAL</span> <span class="amount">$ 151.00</span></li>
+                                            <li class="sub-total"><span>UMUMIY SUMMA</span> 
+                                                <% let sum = 0%>
+                                            <%for(let i=0; i<basket.length; i++){%>
+                                              <%  sum+=basket[i].productID.price %>
+                                              <% sum%>
+                                            <%}%>
+                                            <%= sum%> So'm
+                                        </li>
+                                            <li class="cart-total-amount"><span>MAHSULOTLAR SONI</span> <span class="amount"><%= basket.length%> ta</span></li>
                                         </ul>
                                         <a href="/api/order" class="btn">PROCEED TO CHECKOUT</a>
                                     </form>
@@ -108,4 +97,12 @@
 
         </main>
         <!-- main-area-end -->
-
+<script>
+    function summa(result){
+        let sum = 0
+    for(let i=0; i.result.length; i++){
+        sum+=result[i].producID.price
+        return sum
+    }
+}
+</script>

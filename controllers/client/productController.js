@@ -2,6 +2,7 @@ const Type = require('../../models/Type')
 const Product = require('../../models/Products')
 const Slider = require('../../models/Slider')
 const Category = require('../../models/Category')
+const Commit = require('../../models/Commit')
 
 exports.productAll = async (req,res,next)=>{
     const user = req.session.user
@@ -16,6 +17,6 @@ exports.productAll = async (req,res,next)=>{
 exports.getProduct = async (req,res,next)=>{
     const user = req.session.user
     const result = await Product.findById(req.params.id).populate(['categoryID','colorID','brandID','typeID'])
-    const slider = await Slider.find().sort({createdAt:-1})
-    res.render('client/shop-details', {layout:'./client_layout', user,slider, result})
+    const commit = await Commit.find({productID:result._id}).populate('userID')
+    res.render('client/shop-details', {layout:'./client_layout', user,commit, result})
 }

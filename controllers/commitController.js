@@ -1,20 +1,17 @@
 const Commit = require ('../models/Commit')
 exports.addComment = async (req,res) => {
-    const comment = new Commit({
-        message: req.body.message,
-        userID : req.body.userID,
-        productID : req.body.productID
-    }) ;
-    await comment.save()
-    .then(()=> {
-        res.status(201).json({
-            success : true,
-            comment :comment
-        })
-    })
-    .catch((error) => {
-        res.send(error)
-    })
+    const id = req.body.productID
+    try {
+        const comment = new Commit({
+            message: req.body.message,
+            userID : req.body.userID,
+            productID : req.body.productID
+        }) ;
+        await comment.save()
+        res.redirect(`/product/${id}`)
+    } catch (error) {
+        return res.status(500).redirect(`/product/${id}`)
+    }
 }
 
 exports.getComment = async (req,res) => {
