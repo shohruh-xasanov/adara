@@ -14,7 +14,7 @@ exports.createCollection = async (req,res,next)=>{
 
 exports.getAll = async (req,res,next)=>{
     const result = await Collection.find()
-    const product = await Product.find()
+    const product = await Product.find().populate(['categoryID', 'brandID'])
     const user = req.session.admin
     res.render('admin/collection/index', {layout:'./admin_layout', user, product, result})
 }

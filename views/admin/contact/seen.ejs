@@ -40,8 +40,8 @@
                     align-items: center;
                   ">
                     
-                    <a class="btn btn-success pl-2 pr-2" href="<%=`/api/contact/${item._id}`%>">
-                      <i class="fas fa-eye"></i>
+                    <a class="btn btn-warning" href="<%=`/api/contact/${item._id}`%>">
+                        <i class="icofont-binary"></i>
                     </a>
                     <form method="POST" class="hidden-r" action="<%=`/api/contact/${item._id}?_method=DELETE`%>">
                       <button type="submit" class="btn btn-danger">

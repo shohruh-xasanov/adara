@@ -4,7 +4,7 @@
         <main>
 
             <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg03.jpg">
+            <section class="breadcrumb-area breadcrumb-bg" data-background="/public/uploads/<%= slider[0].image%>">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -12,7 +12,7 @@
                                 <h2>Cart Page</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Cart</li>
                                     </ol>
                                 </nav>
@@ -38,63 +38,40 @@
                                                 <th class="product-price">Price</th>
                                                 <th class="product-quantity">QUANTITY</th>
                                                 <th class="product-subtotal">SUBTOTAL</th>
-                                                <th class="product-delete"></th>
+                                                <th class="product-delete">Parametr</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <%for(item of basket) {%>
                                             <tr>
-                                                <td class="product-thumbnail"><a href="shop-details.html"><img src="img/product/cart_img01.jpg" alt=""></a></td>
+                                                <td class="product-thumbnail"><a href="/product/<%= item.productID._id%>"><img src="<%= item.productID.images[0].url%>" alt=""></a></td>
                                                 <td class="product-name">
-                                                    <h4><a href="shop-details.html">Travelling Bags</a></h4>
+                                                    <h4><a href="/product/<%= item.productID._id%>"><%= item.productID.name.uz%></a></h4>
                                                 </td>
-                                                <td class="product-price">$ 37.00</td>
+                                                <td class="product-price"><%= item.productID.price%> So'm</td>
                                                 <td class="product-quantity">
                                                     <div class="cart-plus-minus">
                                                         <form action="#" class="num-block">
                                                             <input type="text" class="in-num" value="1" readonly="">
                                                             <div class="qtybutton-box">
-                                                                <span class="plus"><img src="img/icon/plus.png" alt=""></span>
-                                                                <span class="minus dis"><img src="img/icon/minus.png" alt=""></span>
+                                                                <span class="plus"><img src="/img/icon/plus.png" alt=""></span>
+                                                                <span class="minus dis"><img src="/img/icon/minus.png" alt=""></span>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </td>
-                                                <td class="product-subtotal"><span>$ 74.00</span></td>
-                                                <td class="product-delete"><a href="#"><i class="flaticon-trash"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="product-thumbnail"><a href="shop-details.html"><img src="img/product/cart_img02.jpg" alt=""></a></td>
-                                                <td class="product-name">
-                                                    <h4><a href="shop-details.html">Travelling Bags</a></h4>
+                                                <td class="product-subtotal"><span><%= item.productID.price%> So'm</span></td>                
+                                                <td class="product-delete">
+                                                    <form method="POST" class="hidden-r" action="<%=`/api/basket/${item._id}?_method=DELETE`%>">
+                                                    <button type="submit" class="btn btn-danger">
+                                                    <a href="#"><i class="flaticon-trash"></i></a>
+                                                    </button>
+                                                    </form>
                                                 </td>
-                                                <td class="product-price">$ 37.00</td>
-                                                <td class="product-quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <form action="#" class="num-block">
-                                                            <input type="text" class="in-num" value="1" readonly="">
-                                                            <div class="qtybutton-box">
-                                                                <span class="plus"><img src="img/icon/plus.png" alt=""></span>
-                                                                <span class="minus dis"><img src="img/icon/minus.png" alt=""></span>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal"><span>$ 74.00</span></td>
-                                                <td class="product-delete"><a href="#"><i class="flaticon-trash"></i></a></td>
                                             </tr>
+                                            <% }%>
                                         </tbody>
                                     </table>
-                                </div>
-                                <div class="shop-cart-bottom mt-20">
-                                    <div class="cart-coupon">
-                                        <form action="#">
-                                            <input type="text" placeholder="Enter Coupon Code...">
-                                            <button class="btn">Apply Coupon</button>
-                                        </form>
-                                    </div>
-                                    <div class="continue-shopping">
-                                        <a href="shop.html" class="btn">update shopping</a>
-                                    </div>
                                 </div>
                             </div>
                             <div class="cart-total pt-95">
@@ -119,7 +96,7 @@
                                             </li>
                                             <li class="cart-total-amount"><span>TOTAL</span> <span class="amount">$ 151.00</span></li>
                                         </ul>
-                                        <a href="checkout.html" class="btn">PROCEED TO CHECKOUT</a>
+                                        <a href="/api/order" class="btn">PROCEED TO CHECKOUT</a>
                                     </form>
                                 </div>
                             </div>

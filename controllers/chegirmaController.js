@@ -23,12 +23,12 @@ exports.addChegirma = async (req,res,next)=>{
 exports.getAll = async (req,res,next)=>{
     const result = await Chegirma.find() 
         .populate({
-        path: "productID",
+        path: "productID", 
         select: ["prev_payment", "price", "name"],
       })
       .sort({createdAt:-1})
     const user = req.session.admin
-    const product = await Product.find()
+    const product = await Product.find().populate(['categoryID', 'brandID'])
     res.render('admin/chegirma/index',{layout:'./admin_layout', user, product, result})
 }
 

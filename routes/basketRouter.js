@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {addBasket, getAll} = require('../models/Basket')
-router.post('/create', addBasket)
-router.get('/all',getAll)
+const {createBasket,deleteBasket, getAll} = require('../controllers/client/basketController')
+router.post('/create', createBasket)
+router.get('/:id',getAll)
+router.delete('/:id', deleteBasket)
 module.exports = router

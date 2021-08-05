@@ -1,4 +1,8 @@
-
+<style>
+.button {
+visibility: hidden;
+}
+</style>
 
         <!-- main-area -->
         <main>
@@ -120,7 +124,6 @@
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= men[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -146,7 +149,22 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                           <% if(user) {%>
+                                        <form action="/api/basket/create" method="POST">
+                                          <% }else{%>
+                                        <form action="#" >
+                                          <% }%>
+                                            <% if(user) {%>
+                                          <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                          <input type="text" class="button" name="productID" value="<%= men[i]._id%>">
+                                          <% }%>
+                                          <% if(!user) {%>
+                                          <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                            data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                          <% } else{%>
+                                          <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                          <% }%>
+                                      </form>
                                     </div>
                                 </div>
                                 <% }%>
@@ -166,7 +184,7 @@
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
+                                                    <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= women[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -192,7 +210,17 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                        <% if(!user) {%>
+                                            <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                              data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                              <% }%>
+                                        <% if(user) {%>
+                                            <form action="/api/basket/create" method="POST">
+                                              <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                              <input type="text" class="button" name="productID" value="<%= women[i]._id%>">
+                                              <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                              <% }%>
+                                          </form>
                                     </div>
                                 </div>
                                 <% }%>
@@ -212,7 +240,7 @@
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
+                                                    <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= shoes[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -238,7 +266,17 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                        <% if(!user) {%>
+                                            <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                              data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                              <% }%>
+                                        <% if(user) {%>
+                                            <form action="/api/basket/create" method="POST">
+                                              <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                              <input type="text" class="button" name="productID" value="<%= shoes[i]._id%>">
+                                              <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                          </form>
+                                          <% }%>
                                     </div>
                                 </div>
                                 <% }%>
@@ -258,7 +296,7 @@
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
+                                                    <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= clothing[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -284,7 +322,17 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                        <% if(!user) {%>
+                                            <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                              data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                              <% }%>
+                                        <% if(user) {%>
+                                            <form action="/api/basket/create" method="POST">
+                                              <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                              <input type="text" class="button" name="productID" value="<%= clothing[i]._id%>">
+                                              <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                              <% }%>
+                                          </form>
                                     </div>
                                 </div>
                                 <% }%>
@@ -367,7 +415,7 @@
                                                     </a>
                                                     <div class="product-overlay-action">
                                                         <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
+                                                            <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                             <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
                                                         </ul>
                                                     </div>
@@ -393,7 +441,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                                <div class="features-product-cart"><a href="/cart">add to cart</a></div>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -404,7 +452,7 @@
                                                     </a>
                                                     <div class="product-overlay-action">
                                                         <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
+                                                            <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                             <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
                                                         </ul>
                                                     </div>
@@ -429,7 +477,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                                <div class="features-product-cart"><a href="/cart">add to cart</a></div>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -440,7 +488,7 @@
                                                     </a>
                                                     <div class="product-overlay-action">
                                                         <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
+                                                            <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                             <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
                                                         </ul>
                                                     </div>
@@ -466,7 +514,7 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                                <div class="features-product-cart"><a href="/cart.html">add to cart</a></div>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -1742,6 +1790,22 @@
 
          <hr>
 
+         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title mt-0" id="myLargeModalLabel">Siz ro'yhatdan o'tmaganligingiz sababli mahsulot sotib ololmaysiz</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+                 <button class="btn btn-primary"><a href="/api/user/sign"> Saytga kirish</button></a>
+             </div>
+           </div>
+         </div>
+       </div>
         </main>
         <!-- main-area-end -->
 

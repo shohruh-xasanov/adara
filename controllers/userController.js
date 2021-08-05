@@ -1,58 +1,67 @@
 const User = require('../models/User')
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt')
+const Type = require('../models/Type')
 
 exports.register= async (req,res,next)=>{
     try {
-        const {fullName,email,password,phone,uuid,role} = req.body
+        const {name,email,password} = req.body
         const uid = uuidv4()
-    const user = new User({fullName,email,password,phone,address,uuid:uid,role})
+    const user = new User({name,email,password,uuid:uid})
     await user.save()
-    req.session.admin = user;
+    req.session.user = user;
     req.session.isAuth = true;
     req.session.save();
-        res.status(201).json({ success: "Success", data: user });
+        res.status(201).redirect('/')
     } catch (error) {
-        return res.status(500).json({msg:error.message})
+        return res.redirect('/api/user/sign')
     }
 }
 
 exports.login = async (req,res,next)=>{
     const {email, password} = req.body
     if (!email || !password) {
-      res.redirect("/admin/login");
+      res.redirect("/api/user/sign");
     }
     await User.findOne({email}, (err,user)=>{
         if(err){
-            return res.status(403).json({msg:err.message})
+            return res.redirect("/api/user/sign");
         }
         if(!email){
-        return res.status(404).json({msg:"Bunaqa foydalanuvchi mavjud emas"})
+        return res.redirect("/api/user/sign");
         }
         user.matchPassword(password, (err, isMatch)=>{
-            if(err) throw err;
+            if(err){
+                res.redirect("/api/user/sign");
+            }
             if (!isMatch) {
-                res.status(404).json({msg:"Password xato"})
+                res.status(404).redirect("/api/user/sign");
               }else{
-                  req.session.admin = user;
+                  req.session.user = user;
                   req.session.isAuth = true;
                   req.session.save()
-                  res.status(200).json(user)
+                  res.redirect('/')
               }
         });
     })
 }
 
+exports.userLogin = async (req,res,next)=>{
+    const user = req.session.user
+    const type = await  Type.find()
+    res.render('client/sign',{layout:"./client_layout",user,type})
+}
+
 exports.logout = async (req,res,next)=>{
     req.session.destroy();
-    res.clearCookie("connectid.sid");
-    res.redirect('/user/login')
+    res.clearCookie("connect.sid");
+    res.redirect('/')
 }
 
 exports.getOne = async (req, res, next) => {
-  const result = await User.findById(req.params.id)
-  const user = req.session.admin; 
-  res.status(200).json({result,user})
+    const type = await Type.find()
+  const user = await User.findById(req.params.id)
+  res.render('client/account', {layout:'./client_layout',type, user})
 }
 
 exports.deleteUser = async (req, res, next) => {
@@ -61,15 +70,16 @@ exports.deleteUser = async (req, res, next) => {
   };
 
 exports.updateOne = async (req,res,next)=>{
+    const result = await User.findById(req.params.id)
     try {
-        const {fullName,email,password,phone,addressrole} = req.body;
-        await User.findById({_id:req.params.id}, {fullName,email,password,phone,addressrole})
-        .save()
+         const {name,email,password, password1} = req.body;
+         await User.findByIdAndUpdate({_id:req.params.id}, {name,email,password})
         .then(user=>{
-            req.session.admin = user;
+            req.session.user = user
             req.session.save()
         })
+        res.redirect('/')
     } catch (error) {
-        return res.status(500).json({msg:error.message})
+        return res.redirect(`/api/user/getme/${result._id}`)
     }
 }

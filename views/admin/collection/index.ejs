@@ -102,7 +102,7 @@
             <select name="productID" class="theme-input-style multiple" value="" id="filterTheme" data-placeholder="multiple-select" multiple="multiple">
                 <option style="font-weight: bold">Tanlash ...</option>
                 <% for (let item of product) {%>
-                <option value="<%= item._id %>"><%= item.name.uz %></option>
+                <option value="<%= item._id %>"><%= item.name.uz %> <%= item.categoryID.name.uz%> <%= item.brandID.name.uz%></option>
                 <% } %>
             </select>
             </div>
