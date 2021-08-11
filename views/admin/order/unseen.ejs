@@ -7,7 +7,7 @@
           justify-content: space-between;
           align-items: center;
         ">
-        <h4 class="m-3" style="font-weight: 700">Yangi murjaatlar ro'yhati</h4>
+        <h4 class="m-3" style="font-weight: 700">Yangi Buyurttmalar ro'yhati</h4>
         <a href="/api/order/seen" class="btn btn-primary waves-effect waves-light" 
           data-target=".bs-example-modal-lg">
           Ko'rib chiqilganlar  ro'yhati
@@ -33,7 +33,7 @@
               <% for(let item of result) {%>
                 <tr>
                   <td>
-                    <%= item.userID.fullName %>
+                    <%= item.userID.name %>
                   </td>
                   <td>
                     <%= item.order_id %>
@@ -51,7 +51,7 @@
                     
                     <form method="POST" class="hidden-r" action="<%=`/api/order/makeSeen/${item._id}?_method=PUT`%>">
                       <button type="submit" class="btn btn-warning">
-                        <i class="icofont-bin"></i>
+                        <i class="icofont-binary"></i>
                       </button>
                     </form>
                   </td>

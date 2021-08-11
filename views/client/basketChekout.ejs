@@ -36,32 +36,27 @@
                                 <div class="shop-cart-widget">
                                     <form action="/api/order/create" method="POST">
                                         <ul>
-                                            <li class="sub-total"><span>Mahsulot</span><%= product.name.uz%></li>
+                                            <%for(item of product) {%>
+                                            <li class="sub-total"><span>Mahsulot</span><%= item.productID.typeID.name.uz%> <%= item.productID.name.uz%> <%= item.productID.categoryID.name.uz%></li>
+                                            <% }%>
                                             <li>
-                                                <span>Mahsulot Rangi</span>
-                                                <div>
-                                                    <%for(item of product.colorID) {%>
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" id="color" name="color" value="<%= item.name.uz%>">
-                                                        <label >Color: <%= item.name%> </label>
-                                                    </div>
-                                                    <% }%>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <span>Mahsulot O'lchami</span>
-                                                   <% let size = product.size.split(' ')%>
-                                                <%for(item of size) {%>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="size"  value="item">
-                                                    <label >Size: <%= item%></label>
-                                                </div>
-                                                <% }%>
-                                            </li>
-                                            <li>
-                                                <span>Mahsulot Soni</span>
+                                                <span>Mahsulotlar Soni</span>
                                                 <div class="cart-plus-minus">
                                                         <input type="number" name="total_num" class="in-num" value="1">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="col-6">
+                                                    <div class="form-grp">
+                                                        <label>Rangni tanlang <span>*</span></label>
+                                                        <select name="color" class="custom-select">
+                                                            <option value="Qizil">Qizil</option>
+                                                            <option value="Qora">Qora</option>
+                                                            <option value="Oq">Oq</option>
+                                                            <option value="Yashil">Yashil</option>
+                                                            <option value="Sariq">Sariq</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </li>
                                             <li> 
@@ -76,7 +71,11 @@
                                                 <div class="button">
                                                 <input type="text" name="user" value="<%= user._id%>">
                                                 <input type="text" name="uuid" value="<%= user.uuid%>">
-                                                <input type="text" name="product" value="<%= product._id%>">
+                                                <% let id = []%>
+                                                <%for(let i=0; i<product.length; i++) {%>
+                                                    <% id.push(product[i].productID._id)%>
+                                                    <% }%>
+                                                <input type="text" name="product" value="<%= id%>">
                                                 </div>
                                             </li>
                                             <li> 

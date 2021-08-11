@@ -56,7 +56,7 @@ exports.addProduct = async (req,res,next)=>{
         await product.save()
         res.redirect('/api/product/all')
     } catch (error) {
-        return res.status(500).json({msg:error.message})
+        return res.redirect('/api/product/all')
     }
 }
 
@@ -68,4 +68,63 @@ exports.getAll = async (req,res,next)=>{
     const category = await Category.find()
     const product = await Product.find().populate(['categoryID','colorID','brandID','typeID'])
     res.render('admin/product/index', {layout:'./admin_layout', product,brand,color,type,user,category})
+}
+
+exports.getById=async (req,res)=>{
+    const product = await Product.findById(req.params.id)
+    const category = await Category.find()
+    const color = await Color.find()
+    const user = req.session.admin; // admin session
+    res.render('./admin/product/update', {
+        layout: "./admin_layout", 
+        product,
+        user,category,
+        color
+    })
+}
+exports.updateProduct = async(req, res) => {
+
+    const product = await Product.findByIdAndUpdate(req.params.id)
+    product.price = req.body.price
+    product.name.ru=req.body.nameru
+    product.name.uz=req.body.nameuz
+    // product.poster=req.body.poster
+    // product.images=req.body.images
+    product.categoryID.ru= req.body.categoryIDru
+    product.categoryID.uz= req.body.categoryIDuz
+    product.description.uz=req.body.descriptionuz
+    product.description.ru=req.body.descriptionru
+    product.save({validateBeforeSave:false})
+        .then(()=>{
+            res.redirect('/api/product/all')
+        })
+        .catch((err)=>{
+            res.status(400).json({message: "Badly", data: error})
+        })
+}
+
+exports.deleteFilePoster = async (req, res) => {
+    await Product.findByIdAndDelete({_id: req.params.id})
+        .exec((error,data) => {
+            if(error) {
+                res.send(error)
+            }
+            else{
+                const isMatch = data.images
+                const thumb = data.poster
+                let fileOriginalFirstElelement = path.join(path.dirname(__dirname) + `${thumb}`)
+                for(let i = 0; i < isMatch.length; i++){
+                    let fileOriginal = path.join(path.dirname(__dirname) + `${isMatch[i].url}`)
+                    fs.unlink(fileOriginal, async (error) => {
+                        if (error) {
+                            throw error;
+                        }
+                    })
+                }
+                fs.unlink (fileOriginalFirstElelement, (error) => {
+                    if (error) throw error;
+                })
+                res.redirect('/api/product/all')
+            }
+        })
 }

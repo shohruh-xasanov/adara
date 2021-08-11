@@ -1,10 +1,9 @@
 const router = require('express').Router()
-const {createCollection, getAll,elementById,elementUpdate,elemenDelete} = require('../controllers/collectionController')
+const {createCollection, getAll,elementById,elemenDelete} = require('../controllers/collectionController')
 const {isAdminAuth} = require('../middleware/auth')
 router.post('/create', isAdminAuth, createCollection)
 router.get('/all',isAdminAuth, getAll)
 router.route('/:id')
     .get(isAdminAuth,elementById)
-    .put(isAdminAuth,elementUpdate)
     .delete(isAdminAuth,elemenDelete)
 module.exports = router

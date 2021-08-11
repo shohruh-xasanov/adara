@@ -65,7 +65,7 @@ exports.adminLogin = async (req,res,next)=>{
     if(req.session.admin){
         res.redirect('/api/admin/dashboard')
     }if(req.session.user){
-        res.redirect('/')
+        res.redirect('/api/auth/logout')
     }
     res.render('admin/login/index', {layout:false})
 }

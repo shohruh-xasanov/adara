@@ -5,11 +5,13 @@ const collectionSchema = new mongoose.Schema({
         uz:{type:String, required:true},
         ru:{type:String, required:true}
     },
-    productID:{
+    productID:[
+        {
         type:mongoose.Schema.ObjectId,
         ref:'Product',
         required:true
     }
+]
 },{
     timestamps:true
 })

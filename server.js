@@ -5,7 +5,6 @@ const store = require('./config/db').store
 const connectDB = require('./config/db').connectDB
 const layout = require('express-ejs-layouts')
 const path = require('path')
-const Type = require('./models/Type')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const session = require('express-session')

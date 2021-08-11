@@ -1,5 +1,7 @@
 const Basket = require('../../models/Basket')
 const Slider = require('../../models/Slider')
+const Product = require('../../models/Products')
+
 exports.createBasket = async (req,res,next)=>{
     try {
         const {userID, productID} = req.body

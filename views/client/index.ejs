@@ -184,7 +184,6 @@ visibility: hidden;
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= women[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -240,7 +239,6 @@ visibility: hidden;
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= shoes[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -296,7 +294,6 @@ visibility: hidden;
                                             </a>
                                             <div class="product-overlay-action">
                                                 <ul>
-                                                    <li><a href="/cart"><i class="far fa-heart"></i></a></li>
                                                     <li><a href="/product/<%= clothing[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                 </ul>
                                             </div>
@@ -348,14 +345,14 @@ visibility: hidden;
             <!-- features-product-area-end -->
 
             <!-- discount-area -->
-            <section class="discount-area discount-bg jarallax parallax-img" data-background="<%= chegirma[1].poster%>">
+            <section class="discount-area discount-bg jarallax parallax-img" data-background="<%= result.productID[2].poster%>">
                 <div class="container">
                     <div class="row justify-content-center justify-content-lg-start">
                         <div class="col-lg-6 col-md-10">
                             <div class="discount-content text-center">
-                                <span style="color:black;">STOCK IS LIMITED</span>
-                                <h2 style="color:black;" >Winter Collection End of Season Sale upto 30%</h2>
-                                <a href="/product/<%= chegirma[1]._id%>" class="btn" style="color:black;">shop now</a>
+                                <span style="color:rgb(201, 126, 13);">STOCK IS LIMITED</span>
+                                <h2 style="color:rgb(201, 126, 13);" ><%= result.name.uz%> Sale upto 30%</h2>
+                                <a href="/product/collection/<%= result._id%>" class="btn" style="color:rgb(201, 126, 13);">shop now</a>
                             </div>
                         </div>
                     </div>
@@ -379,10 +376,7 @@ visibility: hidden;
                                 <h5>Clothing</h5>
                                 <ul class="nav nav-tabs" id="trendingTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="true">Accessories</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="bags-tab" data-toggle="tab" href="#bags" role="tab" aria-controls="bags" aria-selected="false">Bags</a>
+                                        <a class="nav-link active" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="true">Shoes</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="bSellers-tab" data-toggle="tab" href="#bSellers" role="tab" aria-controls="bSellers" aria-selected="false">Best Sellers</a>
@@ -391,492 +385,94 @@ visibility: hidden;
                                         <a class="nav-link" id="shirts-tab" data-toggle="tab" href="#shirts" role="tab" aria-controls="shirts" aria-selected="false">Shirts</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="shoesTwo-tab" data-toggle="tab" href="#shoesTwo" role="tab" aria-controls="shoesTwo" aria-selected="false">Shoes</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="travelOut-tab" data-toggle="tab" href="#travelOut" role="tab" aria-controls="travelOut" aria-selected="false">Travel & Outdoor</a>
+                                        <a class="nav-link" id="shoesTwo-tab" data-toggle="tab" href="#shoesTwo" role="tab" aria-controls="shoesTwo" aria-selected="false">Accessories</a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> 
                         <div class="col-10">
                             <div class="tab-content tp-tab-content" id="trendingTabContent">
                                 <div class="tab-pane show active" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">
                                     <div class="trending-products-banner banner-animation">
-                                        <a href="shop-sidebar.html"><img src="img/images/trending_banner.jpg" alt=""></a>
+                                        <a href="/product/<%= men[3]._id%>"><img src="<%=men[3].images[0].url%>" alt=""></a>
                                     </div>
                                     <div class="row trending-product-active">
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product01.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="/cart"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
+                                        <% for(let i=0;i<5; i++) {%>
+                                            <div class="col">
+                                                <div class="features-product-item mb-30">
+                                                    <div class="features-product-thumb">
+                                                        <%if(men[i].chegirma>0) {%>
+                                                        <div class="discount-tag"><%= Math.floor(100-(men[i].chegirma/men[i].prev_payment)*100)%>%</div>
+                                                        <%}%>
+                                                        <a href="/product/<%= men[i]._id%>">
+                                                            <img src="<%=men[i].images[0].url%>" alt="">
+                                                        </a>
+                                                        <div class="product-overlay-action">
+                                                            <ul>
+                                                                <li><a href="/product/<%= men[i]._id%>"><i class="far fa-eye"></i></a></li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
+                                                    <div class="features-product-content">
+                                                        <div class="rating">
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                            <i class="far fa-star"></i>
+                                                        </div>
+                                                        <h5><a href="/product/<%= men[i]._id%>"><%= men[i].name.uz%></a></h5>
+                                                        <p class="price"><%= men[i].price%> So'm</p>
+                                                        <div class="features-product-bottom">
+                                                            <ul>
+                                                                <li class="color-option">
+                                                                    <span class="gray"></span>
+                                                                    <span class="cyan"></span>
+                                                                    <span class="orange"></span>
+                                                                </li>
+                                                                <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                       <% if(user) {%>
+                                                    <form action="/api/basket/create" method="POST">
+                                                      <% }else{%>
+                                                    <form action="#" >
+                                                      <% }%>
+                                                        <% if(user) {%>
+                                                      <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                                      <input type="text" class="button" name="productID" value="<%= men[i]._id%>">
+                                                      <% }%>
+                                                      <% if(!user) {%>
+                                                      <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                                        data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                                      <% } else{%>
+                                                      <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                                      <% }%>
+                                                  </form>
                                                 </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women Shoes</a></h5>
-                                                    <p class="price">$67.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="/cart">add to cart</a></div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product02.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="/cart"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Exclusive Handbags</a></h5>
-                                                    <p class="price">$45.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="/cart">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product03.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="/cart"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Travelling Bags</a></h5>
-                                                    <p class="price">$29.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="/cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product04.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Winter Jackets</a></h5>
-                                                    <p class="price">$59.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product05.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Drawstring Sweatshirt</a></h5>
-                                                    <p class="price">$18.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product06.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women sleeping dress</a></h5>
-                                                    <p class="price">$12.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="bags" role="tabpanel" aria-labelledby="bags-tab">
-                                    <div class="trending-products-banner banner-animation">
-                                        <a href="shop-sidebar.html"><img src="img/images/trending_banner02.jpg" alt=""></a>
-                                    </div>
-                                    <div class="row trending-product-active">
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product07.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women Shoes</a></h5>
-                                                    <p class="price">$67.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product04.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Exclusive Handbags</a></h5>
-                                                    <p class="price">$45.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product02.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Travelling Bags</a></h5>
-                                                    <p class="price">$29.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product05.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Winter Jackets</a></h5>
-                                                    <p class="price">$59.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product03.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Drawstring Sweatshirt</a></h5>
-                                                    <p class="price">$18.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product01.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women sleeping dress</a></h5>
-                                                    <p class="price">$12.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
+                                            <% }%>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bSellers" role="tabpanel" aria-labelledby="bSellers-tab">
                                     <div class="trending-products-banner banner-animation">
-                                        <a href="shop-sidebar.html"><img src="img/images/trending_banner.jpg" alt=""></a>
+                                        <a href="/product/<%= women[1]._id%>"><img src="<%=women[1].images[0].url%>" alt=""></a>
                                     </div>
                                     <div class="row trending-product-active">
+                                        <% for(let i=0;i<4; i++) {%>
                                         <div class="col">
-                                            <div class="features-product-item">
+                                            <div class="features-product-item mb-30">
                                                 <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product01.jpg" alt="">
+                                                    <%if(women[i].chegirma>0) {%>
+                                                    <div class="discount-tag"><%= Math.floor(100-(women[i].chegirma/women[i].prev_payment)*100)%>%</div>
+                                                    <%}%>
+                                                    <a href="/product/<%= women[i]._id%>">
+                                                        <img src="<%=women[i].images[0].url%>" alt="">
                                                     </a>
                                                     <div class="product-overlay-action">
                                                         <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                                                            <li><a href="/product/<%= women[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -888,8 +484,8 @@ visibility: hidden;
                                                         <i class="far fa-star"></i>
                                                         <i class="far fa-star"></i>
                                                     </div>
-                                                    <h5><a href="shop-details.html">Women Shoes</a></h5>
-                                                    <p class="price">$67.00</p>
+                                                    <h5><a href="/product/<%= women[i]._id%>"><%= women[i].name.uz%></a></h5>
+                                                    <p class="price"><%= women[i].price%> So'm</p>
                                                     <div class="features-product-bottom">
                                                         <ul>
                                                             <li class="color-option">
@@ -901,212 +497,39 @@ visibility: hidden;
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                                <% if(!user) {%>
+                                                    <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                                      data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                                      <% }%>
+                                                <% if(user) {%>
+                                                    <form action="/api/basket/create" method="POST">
+                                                      <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                                      <input type="text" class="button" name="productID" value="<%= women[i]._id%>">
+                                                      <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                                      <% }%>
+                                                  </form>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product02.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Exclusive Handbags</a></h5>
-                                                    <p class="price">$45.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product03.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Travelling Bags</a></h5>
-                                                    <p class="price">$29.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product04.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Winter Jackets</a></h5>
-                                                    <p class="price">$59.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product05.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Drawstring Sweatshirt</a></h5>
-                                                    <p class="price">$18.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product06.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women sleeping dress</a></h5>
-                                                    <p class="price">$12.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
+                                        <% }%>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="shirts" role="tabpanel" aria-labelledby="shirts-tab">
                                     <div class="trending-products-banner banner-animation">
-                                        <a href="shop-sidebar.html"><img src="img/images/trending_banner02.jpg" alt=""></a>
+                                        <a href="product/<%= shoes[1]._id%>"><img src="<%=shoes[1].images[0].url%>" alt=""></a>
                                     </div>
-                                    <div class="row trending-product-active">
+                                    <div class="row trending-product-active">  <% for(let i=0;i<4; i++) {%>
                                         <div class="col">
-                                            <div class="features-product-item">
+                                            <div class="features-product-item mb-30">
                                                 <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product07.jpg" alt="">
+                                                    <%if(shoes[i].chegirma>0) {%>
+                                                    <div class="discount-tag"><%= Math.floor(100-(shoes[i].chegirma/shoes[i].prev_payment)*100)%>%</div>
+                                                    <%}%>
+                                                    <a href="/product/<%= shoes[i]._id%>">
+                                                        <img src="<%=shoes[i].images[0].url%>" alt="">
                                                     </a>
                                                     <div class="product-overlay-action">
                                                         <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                                                            <li><a href="/product/<%= shoes[i]._id%>"><i class="far fa-eye"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -1118,8 +541,8 @@ visibility: hidden;
                                                         <i class="far fa-star"></i>
                                                         <i class="far fa-star"></i>
                                                     </div>
-                                                    <h5><a href="shop-details.html">Women Shoes</a></h5>
-                                                    <p class="price">$67.00</p>
+                                                    <h5><a href="/product/<%= shoes[i]._id%>"><%= shoes[i].name.uz%></a></h5>
+                                                    <p class="price"><%= shoes[i].price%> So'm</p>
                                                     <div class="features-product-bottom">
                                                         <ul>
                                                             <li class="color-option">
@@ -1131,654 +554,79 @@ visibility: hidden;
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
+                                                <% if(!user) {%>
+                                                    <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                                      data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                                      <% }%>
+                                                <% if(user) {%>
+                                                    <form action="/api/basket/create" method="POST">
+                                                      <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                                      <input type="text" class="button" name="productID" value="<%= shoes[i]._id%>">
+                                                      <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                                  </form>
+                                                  <% }%>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product04.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Exclusive Handbags</a></h5>
-                                                    <p class="price">$45.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product02.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Travelling Bags</a></h5>
-                                                    <p class="price">$29.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product05.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Winter Jackets</a></h5>
-                                                    <p class="price">$59.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product03.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Drawstring Sweatshirt</a></h5>
-                                                    <p class="price">$18.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product01.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women sleeping dress</a></h5>
-                                                    <p class="price">$12.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
+                                        <% }%>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="shoesTwo" role="tabpanel" aria-labelledby="shoesTwo-tab">
                                     <div class="trending-products-banner banner-animation">
-                                        <a href="shop-sidebar.html"><img src="img/images/trending_banner.jpg" alt=""></a>
+                                        <a href="/product/<%= clothing[1]._id%>"><img src="<%=clothing[1].images[0].url%>" alt=""></a>
                                     </div>
                                     <div class="row trending-product-active">
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product01.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
+                                        
+                                <% for(let i=0;i<4; i++) {%>
+                                    <div class="col">
+                                        <div class="features-product-item mb-30">
+                                            <div class="features-product-thumb">
+                                                <%if(clothing[i].chegirma>0) {%>
+                                                <div class="discount-tag"><%= Math.floor(100-(clothing[i].chegirma/clothing[i].prev_payment)*100)%>%</div>
+                                                <%}%>
+                                                <a href="/product/<%= clothing[i]._id%>">
+                                                    <img src="<%=clothing[i].images[0].url%>" alt="">
+                                                </a>
+                                                <div class="product-overlay-action">
+                                                    <ul>
+                                                        <li><a href="/product/<%= clothing[i]._id%>"><i class="far fa-eye"></i></a></li>
+                                                    </ul>
                                                 </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women Shoes</a></h5>
-                                                    <p class="price">$67.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product02.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
+                                            <div class="features-product-content">
+                                                <div class="rating">
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
                                                 </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Exclusive Handbags</a></h5>
-                                                    <p class="price">$45.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                <h5><a href="/product/<%= clothing[i]._id%>"><%= clothing[i].name.uz%></a></h5>
+                                                <p class="price"><%= clothing[i].price%> So'm</p>
+                                                <div class="features-product-bottom">
+                                                    <ul>
+                                                        <li class="color-option">
+                                                            <span class="gray"></span>
+                                                            <span class="cyan"></span>
+                                                            <span class="orange"></span>
+                                                        </li>
+                                                        <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
+                                                    </ul>
                                                 </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product03.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Travelling Bags</a></h5>
-                                                    <p class="price">$29.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product04.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Winter Jackets</a></h5>
-                                                    <p class="price">$59.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product05.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Drawstring Sweatshirt</a></h5>
-                                                    <p class="price">$18.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product06.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women sleeping dress</a></h5>
-                                                    <p class="price">$12.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
+                                            <% if(!user) {%>
+                                                <div ><button type="submit" class="features-product-cart" data-toggle="modal"
+                                                  data-target=".bs-example-modal-lg"><a>add to cart</a></button></div>
+                                                  <% }%>
+                                            <% if(user) {%>
+                                                <form action="/api/basket/create" method="POST">
+                                                  <input type="text" class="button" name="userID" value="<%=user._id%>">
+                                                  <input type="text" class="button" name="productID" value="<%= clothing[i]._id%>">
+                                                  <div ><button type="submit" class="features-product-cart"><a>add to cart</a></button></div>
+                                                  <% }%>
+                                              </form>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane" id="travelOut" role="tabpanel" aria-labelledby="travelOut-tab">
-                                    <div class="trending-products-banner banner-animation">
-                                        <a href="shop-sidebar.html"><img src="img/images/trending_banner02.jpg" alt=""></a>
-                                    </div>
-                                    <div class="row trending-product-active">
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product07.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women Shoes</a></h5>
-                                                    <p class="price">$67.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product04.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Exclusive Handbags</a></h5>
-                                                    <p class="price">$45.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product02.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Travelling Bags</a></h5>
-                                                    <p class="price">$29.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product05.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Winter Jackets</a></h5>
-                                                    <p class="price">$59.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product03.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Drawstring Sweatshirt</a></h5>
-                                                    <p class="price">$18.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="features-product-item">
-                                                <div class="features-product-thumb">
-                                                    <div class="discount-tag">-20%</div>
-                                                    <a href="shop-details.html">
-                                                        <img src="img/product/trending_product01.jpg" alt="">
-                                                    </a>
-                                                    <div class="product-overlay-action">
-                                                        <ul>
-                                                            <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                                                            <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-content">
-                                                    <div class="rating">
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                        <i class="far fa-star"></i>
-                                                    </div>
-                                                    <h5><a href="shop-details.html">Women sleeping dress</a></h5>
-                                                    <p class="price">$12.00</p>
-                                                    <div class="features-product-bottom">
-                                                        <ul>
-                                                            <li class="color-option">
-                                                                <span class="gray"></span>
-                                                                <span class="cyan"></span>
-                                                                <span class="orange"></span>
-                                                            </li>
-                                                            <li class="limited-time"><a href="#">Limited-Time Offer!</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="features-product-cart"><a href="cart.html">add to cart</a></div>
-                                            </div>
-                                        </div>
+                                    <% }%>
                                     </div>
                                 </div>
                             </div>

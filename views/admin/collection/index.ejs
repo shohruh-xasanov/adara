@@ -13,7 +13,6 @@
         Yaratish
       </button>
     </div>
- 
 
     <div class="card m-b-30">
       <div class="card-body">
@@ -32,12 +31,15 @@
             <% for(let item of result) {%>
               <tr>
                 <td>
-                  <%= item.result.name.uz %>
+                  <%= item.name.uz %>
                 </td>
                 <td>
-                  <%= item.productID.name.uz %>
+                  <%for(let i=0; i<item.productID.length; i++) {%>
+                    <p>
+                      <%= item.productID[i].typeID.name.uz %>  <%= item.productID[i].name.uz %> <%= item.productID[i].categoryID.name.uz %> 
+                </p>
+                  <% }%>
                 </td>
-                
                 <td>
                   <%= moment(item.createdAt).format("DD-MM-YYYY") %>
                 </td>
