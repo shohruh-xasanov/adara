@@ -13,7 +13,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item" ><a href="/" >Home</a></li>
-                                        <li class="breadcrumb-item active"  aria-current="page"><%=result[0].typeID.name.uz%></li>
+                                        <li class="breadcrumb-item active"  aria-current="page"><%=result[0].categoryID.name.uz%></li>
                                     </ol>
                                 </nav>
                             </div>
@@ -92,16 +92,6 @@
                                         <input type="text">
                                         <button><i class="flaticon-search"></i></button>
                                     </form>
-                                </div>
-                                <div class="widget">
-                                    <h4 class="widget-title">Product Categories</h4>
-                                    <div class="sidebar-brand-list">
-                                        <ul>
-                                            <% for(item of category) {%>
-                                            <li><a href="#"><%= item.name.uz%><i class="fas fa-angle-double-right"></i></a></li>
-                                            <% }%>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="widget">
                                     <h4 class="widget-title">Price Filter</h4>

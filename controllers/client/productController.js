@@ -35,9 +35,8 @@ exports.getCollection = async (req,res,next)=>{
 exports.getCategory = async (req,res,next)=>{
     const{id} = req.params
     const user = req.session.user
-    const result = await Product.find({categoryID:id})
-    console.log(result)
+    const result = await Product.find({categoryID:id}).populate(["categoryID"])
     const bestSeller = await Product.find({bestSeller_count:{$gt: 0}}).sort({bestSeller_count:-1}).limit(4)
     const slider = await Slider.find().sort({createdAt:-1})
-    res.render('client/category', {layout:'./client_layout', user, slider,bestSeller,category,result})
+    res.render('client/category', {layout:'./client_layout', user, slider,bestSeller,result})
 }

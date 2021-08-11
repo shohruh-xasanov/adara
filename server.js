@@ -47,6 +47,7 @@ app.use(express.static(path.join(__dirname + "/public/client")))
 
 app.use('/', require('./routes/client/clintRouter'))
 app.use('/product', require('./routes/client/productRouter'))
+app.use('/search', require('./routes/searchRouter'))
 
 
 app.use('/api/admin', require('./routes/admin/adminRouter'))
