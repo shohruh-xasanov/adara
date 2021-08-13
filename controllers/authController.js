@@ -21,33 +21,32 @@ exports.login = async (req,res,next)=>{
     if (!email && !password) {
       res.redirect("/api/auth/login");
     }
-    await User.findOne({email}, (err,user)=>{
-        if(err){
-            return res.status(403).redirect("/api/auth/login");
-        }
-        if(!email){
-        return res.status(404).redirect("/api/auth/login");
-        }
-        user.matchPassword(password, (err, isMatch)=>{
-            if(err){
-               return res.redirect('/api/auth/login')
-            }
-            if (!isMatch) {
-               return res.status(404).redirect('/api/auth/login')
-              }else{
-                  req.session.admin = user;
-                  req.session.isAuth = true;
-                  req.session.save()
-                  res.redirect('/api/admin/dashboard')
-              }
-        });
+    await User.findOne({email}).then((user)=>{
+        if(!user){
+                return res.status(404).redirect("/api/auth/login");
+            } user.matchPassword(password, (err, isMatch)=>{
+                if(err){
+                   return res.redirect('/api/auth/login')
+                }
+                if (!isMatch) {
+                   return res.status(404).redirect('/api/auth/login')
+                  }else{
+                      req.session.admin = user;
+                      req.session.isAuth = true;
+                      req.session.save()
+                      res.redirect('/api/admin/dashboard')
+                  }
+            });
     })
-}
+    .catch(err=>{
+        return res.redirect('/api/auth/login')
+    })
+    }
 
 exports.logout = async (req,res,next)=>{
     req.session.destroy();
     res.clearCookie("connect.sid");
-    res.redirect('/api/auth//login')
+    res.redirect('/api/auth/login')
 }
 
 exports.getOne = async (req, res, next) => {
@@ -63,11 +62,12 @@ exports.elementDelete = async (req,res,next)=>{
 
 exports.adminLogin = async (req,res,next)=>{
     if(req.session.admin){
-        res.redirect('/api/admin/dashboard')
+        res.redirect('/api/auth/logout')
     }if(req.session.user){
         res.redirect('/api/auth/logout')
+    }else{
+        res.render('admin/login/index', {layout:false})
     }
-    res.render('admin/login/index', {layout:false})
 }
 
 exports.updateOne = async (req,res,next)=>{

@@ -27,7 +27,7 @@ exports.login = async (req,res,next)=>{
         if(err){
             return res.redirect("/api/user/sign");
         }
-        if(!email){
+        if(!user){
         return res.redirect("/api/user/sign");
         }
         user.matchPassword(password, (err, isMatch)=>{
