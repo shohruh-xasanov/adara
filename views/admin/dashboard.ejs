@@ -23,9 +23,9 @@
                     <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
                 </div>
                 <div>
-                    <h5 class="font-16">Kurslar soni</h5>
+                    <h5 class="font-16">Mahsulotlar soni</h5>
                 </div>
-                <h3 class="mt-4">0 ta</h3>
+                <h3 class="mt-4"><%= product%> ta</h3>
                 <div class="progress mt-4" style="height: 4px;">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -43,9 +43,9 @@
                     <i class="mdi mdi-briefcase-check bg-success text-white"></i>
                 </div>
                 <div>
-                    <h5 class="font-16">Yangiliklar soni</h5>
+                    <h5 class="font-16">Buyurtmalar soni</h5>
                 </div>
-                <h3 class="mt-4">0 ta</h3>
+                <h3 class="mt-4"><%= order%> ta</h3>
                 <div class="progress mt-4" style="height: 4px;">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 88%"
                         aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
@@ -63,9 +63,9 @@
                     <i class="mdi mdi-tag-text-outline bg-warning text-white"></i>
                 </div>
                 <div>
-                    <h5 class="font-16">O'qituvchilar soni</h5>
+                    <h5 class="font-16">Sotilgan Mahsulotlar soni</h5>
                 </div>
-                <h3 class="mt-4">0 ta</h3>
+                <h3 class="mt-4"><%= totalN%> ta</h3>
                 <div class="progress mt-4" style="height: 4px;">
                     <div class="progress-bar bg-warning" role="progressbar" style="width: 68%"
                         aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
@@ -83,9 +83,9 @@
                     <i class="mdi mdi-buffer bg-danger text-white"></i>
                 </div>
                 <div>
-                    <h5 class="font-16">O'quvchilar soni</h5>
+                    <h5 class="font-16">Sotilgan mahsulotlar summasi</h5>
                 </div>
-                <h3 class="mt-4">0 ta</h3>
+                <h3 class="mt-4"><%= totalSum%> so'm</h3>
                 <div class="progress mt-4" style="height: 4px;">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: 82%"
                         aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
@@ -247,7 +247,7 @@
                 <% for(let item of admins) {%>
                   <tr>
                     <td>
-                      <%= item.fullName %>
+                      <%= item.name %>
                     </td>
                     <td>
                       <%= item.email %>
